@@ -6,6 +6,7 @@ specifiers:
   '@types/react-dom': 18.0.6
   autoprefixer: ^10.4.8
   axios: ^0.27.2
+  date-fns: ^2.29.1
   eslint: 8.21.0
   eslint-config-next: 12.2.4
   eslint-config-prettier: ^8.5.0
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   axios: 0.27.2
+  date-fns: 2.29.1
   next: 12.2.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -629,6 +631,11 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns/2.29.1:
+    resolution: {integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
