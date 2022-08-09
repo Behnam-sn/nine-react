@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 
 import { FetchTheme } from '@/components/FetchTheme'
 import { HeadBar } from '@/components/HeadBar'
-import { NavBar } from '@/components/NavBar'
+import { NavBar } from '@/components/NavBar/NavBar'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
