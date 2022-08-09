@@ -19,9 +19,9 @@ export const HeadBar = () => {
   }
 
   return (
-    <header className="fixed top-0 z-20 flex w-full justify-between p-3 lg:hidden">
+    <header className="fixed top-0 z-20 flex w-full items-center justify-between p-3 lg:hidden">
       <div className="w-full">
-        <button onClick={ToggleTheme}>
+        <button className="flex items-center" onClick={ToggleTheme}>
           {theme === 'light' ? (
             <MoonIcon className="h-8 fill-secondary-900" />
           ) : (
@@ -29,8 +29,10 @@ export const HeadBar = () => {
           )}
         </button>
       </div>
-      <div className="w-full text-center">nine</div>
-      <div className="w-full text-end">
+      <div className="w-full text-center text-lg font-bold text-secondary-900 transition-colors duration-300 dark:text-primary-900">
+        nine
+      </div>
+      <div className="w-full">
         <LogInIcon className="mr-0 ml-auto h-8 fill-secondary-900 transition-colors duration-300 dark:fill-primary-900" />
       </div>
     </header>
