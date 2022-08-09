@@ -1,3 +1,6 @@
+import { LogInIcon } from '@/components/icons/LogInIcon'
+import { MoonIcon } from '@/components/icons/MoonIcon'
+import { SunIcon } from '@/components/icons/SunIcon'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export const HeadBar = () => {
@@ -16,12 +19,20 @@ export const HeadBar = () => {
   }
 
   return (
-    <header className="fixed top-0 z-20 flex w-full justify-between px-3 lg:hidden">
+    <header className="fixed top-0 z-20 flex w-full justify-between p-3 lg:hidden">
       <div className="w-full">
-        <button onClick={ToggleTheme}>{theme}</button>
+        <button onClick={ToggleTheme}>
+          {theme === 'light' ? (
+            <MoonIcon className="h-8 fill-secondary-900" />
+          ) : (
+            <SunIcon className="h-8 fill-primary-900" />
+          )}
+        </button>
       </div>
       <div className="w-full text-center">nine</div>
-      <div className="w-full text-end">log</div>
+      <div className="w-full text-end">
+        <LogInIcon className="mr-0 ml-auto h-8 fill-secondary-900 transition-colors duration-300 dark:fill-primary-900" />
+      </div>
     </header>
   )
 }
