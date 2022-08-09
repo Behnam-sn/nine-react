@@ -1,5 +1,5 @@
 interface Props {
-  className?: string
+  className: string
 }
 
 export const HomeIcon = ({ className }: Props) => {
