@@ -1,8 +1,8 @@
-import { BellIcon } from '@/icons/BellIcon'
-import { HomeIcon } from '@/icons/HomeIcon'
-import { PlusIcon } from '@/icons/PlusIcon'
-import { SearchIcon } from '@/icons/SearchIcon'
-import { UserIcon } from '@/icons/UserIcon'
+import { BellIcon } from '@/components/icons/BellIcon'
+import { HomeIcon } from '@/components/icons/HomeIcon'
+import { PlusIcon } from '@/components/icons/PlusIcon'
+import { SearchIcon } from '@/components/icons/SearchIcon'
+import { UserIcon } from '@/components/icons/UserIcon'
 
 export const NavBar = () => {
   return (
