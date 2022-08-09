@@ -534,7 +534,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001374
-      electron-to-chromium: 1.4.211
+      electron-to-chromium: 1.4.212
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: true
@@ -731,8 +731,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.4.211:
-    resolution: {integrity: sha512-BZSbMpyFQU0KBJ1JG26XGeFI3i4op+qOYGxftmZXFZoHkhLgsSv4DHDJfl8ogII3hIuzGt51PaZ195OVu0yJ9A==}
+  /electron-to-chromium/1.4.212:
+    resolution: {integrity: sha512-LjQUg1SpLj2GfyaPDVBUHdhmlDU1vDB4f0mJWSGkISoXQrn5/lH3ECPCuo2Bkvf6Y30wO+b69te+rZK/llZmjg==}
     dev: true
 
   /emoji-regex/9.2.2:
@@ -983,7 +983,7 @@ packages:
       emoji-regex: 9.2.2
       eslint: 8.21.0
       has: 1.0.3
-      jsx-ast-utils: 3.3.2
+      jsx-ast-utils: 3.3.3
       language-tags: 1.0.5
       minimatch: 3.1.2
       semver: 6.3.0
@@ -1009,7 +1009,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.21.0
       estraverse: 5.3.0
-      jsx-ast-utils: 3.3.2
+      jsx-ast-utils: 3.3.3
       minimatch: 3.1.2
       object.entries: 1.1.5
       object.fromentries: 2.0.5
@@ -1543,8 +1543,8 @@ packages:
       minimist: 1.2.6
     dev: true
 
-  /jsx-ast-utils/3.3.2:
-    resolution: {integrity: sha512-4ZCADZHRkno244xlNnn4AOG6sRQ7iBZ5BbgZ4vW4y5IZw7cVUD1PPeblm1xx/nfmMxPdt/LHsXZW8z/j58+l9Q==}
+  /jsx-ast-utils/3.3.3:
+    resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
     engines: {node: '>=4.0'}
     dependencies:
       array-includes: 3.1.5
