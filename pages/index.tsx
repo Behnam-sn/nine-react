@@ -10,8 +10,7 @@ const API = '/posts/?skip=0&limit=100'
 const Posts = () => {
   const { data, error } = useSWR(API)
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (!data || error) return <div>loading...</div>
 
   return data.map((post: PostModel) => <Post key={post.id} post={post} />)
 }

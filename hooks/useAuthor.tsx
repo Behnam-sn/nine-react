@@ -13,7 +13,6 @@ export const useAuthor = (id: number) => {
 
   return {
     author: data,
-    isLoading: !error && !data,
-    error: error
+    isLoading: !data || error
   } as Props
 }
