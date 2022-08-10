@@ -1,5 +1,20 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import useSWR from 'swr'
+
+import { Post } from '@/components/Post'
+import type { PostModel } from '@/models/post.model'
+
+const API = '/posts/?skip=0&limit=100'
+
+const Posts = () => {
+  const { data, error } = useSWR(API)
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+
+  return data.map((post: PostModel) => <Post key={post.id} post={post} />)
+}
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +25,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>Home</main>
+      <main>
+        <Posts />
+      </main>
     </>
   )
 }
