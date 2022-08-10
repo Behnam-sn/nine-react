@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider>
         <FetchTheme>
           <HeadBar />
-          <div className="mt-10">
+          <div className="mt-14">
             <Component {...pageProps} />
           </div>
           <NavBar />
