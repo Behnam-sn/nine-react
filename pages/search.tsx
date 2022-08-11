@@ -4,7 +4,7 @@ interface Props {}
 
 const Search: NextPage<Props> = ({}) => {
   return (
-    <div>
+    <main>
       <div className="mx-8 pt-4">
         <input
           type="text"
@@ -12,7 +12,7 @@ const Search: NextPage<Props> = ({}) => {
           placeholder="Search"
         />
       </div>
-    </div>
+    </main>
   )
 }
 
