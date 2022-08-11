@@ -17,7 +17,7 @@ export const NavBar = () => {
       <NavBarItem href="/">
         <PlusIcon className="h-8" />
       </NavBarItem>
-      <NavBarItem href="/">
+      <NavBarItem href="/notification">
         <BellIcon className="h-8" />
       </NavBarItem>
       <NavBarItem href="/">
