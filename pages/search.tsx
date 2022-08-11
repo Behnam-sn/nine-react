@@ -1,8 +1,6 @@
 import type { NextPage } from 'next'
 
-interface Props {}
-
-const Search: NextPage<Props> = ({}) => {
+const Search: NextPage = ({}) => {
   return (
     <main>
       <div className="mx-8 pt-4">
