@@ -2,9 +2,7 @@ import type { NextPage } from 'next'
 
 import { BellIcon } from '@/components/icons/BellIcon'
 
-interface Props {}
-
-const Notification: NextPage<Props> = ({}) => {
+const Notification: NextPage = ({}) => {
   return (
     <main className="mt-52">
       <BellIcon className="mx-auto w-20 fill-secondary-900 transition-colors duration-300 dark:fill-primary-900" />
