@@ -1,13 +1,25 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Post: NextPage = () => {
+import { FetchPost } from '@/components/FetchPost'
+
+const Page: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
 
   return (
-    <div className="text-secondary-900 dark:text-primary-900">Post: {id}</div>
+    <>
+      <Head>
+        <title>Nine - Post</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <FetchPost id={id} />
+      </main>
+    </>
   )
 }
 
-export default Post
+export default Page
