@@ -19,7 +19,7 @@ export const Comment = ({ comment, postOwnerId }: Props) => {
 
   return (
     <>
-      <div className="relative z-0 mt-4 pb-10 text-secondary-900 transition-colors duration-300 dark:text-primary-900">
+      <div className="relative z-0 mt-4 pb-10 text-primary-900 transition-colors duration-300 dark:text-primary-100">
         <div className="px-4">
           <div className="flex items-center justify-between">
             <Author id={comment.owner_id} />
@@ -39,7 +39,7 @@ export const Comment = ({ comment, postOwnerId }: Props) => {
         </div>
         <div className="absolute right-4 bottom-4 z-10 flex items-center justify-end">
           <button className="ml-4">
-            <LikeIcon className="h-5 fill-secondary-900 transition-colors duration-300 dark:fill-primary-900" />
+            <LikeIcon className="h-5 fill-primary-900 transition-colors duration-300 dark:fill-primary-100" />
           </button>
           <div className="ml-2">{comment.likes.length}</div>
         </div>

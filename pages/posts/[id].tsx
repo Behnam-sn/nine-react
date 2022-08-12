@@ -26,16 +26,20 @@ export const PostWithDetails = ({ id }: PostWithDetailsProps) => {
 
       <div className="flex">
         <button
-          className={`my-3 ml-2 mr-1 flex w-full justify-center rounded-md py-2 font-semibold ${
-            section === 'comments' ? 'bg-secondary-500 text-primary-900' : ''
+          className={`my-3 ml-2 mr-1 flex w-full justify-center rounded-md py-2 font-semibold transition-colors duration-300 ${
+            section === 'comments'
+              ? 'bg-primary-300 text-primary-100 dark:bg-primary-600'
+              : 'text-primary-900 dark:text-pink-100'
           }`}
           onClick={() => setSection('comments')}
         >
           Comments
         </button>
         <button
-          className={`my-3 ml-1 mr-2 flex w-full justify-center rounded-md py-2 font-semibold ${
-            section === 'likes' ? 'bg-secondary-500 text-primary-900' : ''
+          className={`my-3 ml-1 mr-2 flex w-full justify-center rounded-md py-2 font-semibold transition-colors duration-300 ${
+            section === 'likes'
+              ? 'bg-primary-300 text-primary-100 dark:bg-primary-600'
+              : 'text-primary-900 dark:text-pink-100'
           }`}
           onClick={() => setSection('likes')}
         >

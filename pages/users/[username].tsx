@@ -6,7 +6,7 @@ const User: NextPage = () => {
   const { username } = router.query
 
   return (
-    <div className="text-secondary-900 dark:text-primary-900">
+    <div className="text-primary-900 dark:text-primary-100">
       User: {username}
     </div>
   )
