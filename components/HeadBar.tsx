@@ -19,7 +19,7 @@ export const HeadBar = () => {
   }
 
   return (
-    <header className="fixed top-0 z-20 flex w-full items-center justify-between p-3 lg:hidden">
+    <header className="fixed top-0 z-20 flex w-full items-center justify-between bg-primary-900 p-3 dark:bg-secondary-900 lg:hidden">
       <div className="w-full">
         <button className="flex items-center" onClick={ToggleTheme}>
           {theme === 'light' ? (
