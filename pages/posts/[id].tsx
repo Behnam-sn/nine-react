@@ -21,10 +21,10 @@ export const PostWithDetails = ({ id }: PostWithDetailsProps) => {
   if (error) return <div>post not found</div>
 
   return (
-    <>
+    <div>
       <Post post={post} />
 
-      <div className="flex text-secondary-900 transition-colors duration-300 dark:text-primary-900">
+      <div className="flex">
         <button
           className={`my-3 ml-2 mr-1 flex w-full justify-center rounded-md py-2 font-semibold ${
             section === 'comments' ? 'bg-secondary-500 text-primary-900' : ''
@@ -45,9 +45,9 @@ export const PostWithDetails = ({ id }: PostWithDetailsProps) => {
 
       <Line />
 
-      <div>
-        {section === 'comments' ? (
-          <>
+      {section === 'comments' ? (
+        post.comments.length > 0 ? (
+          <div>
             {post.comments.map(comment => (
               <Comment
                 key={comment.id}
@@ -55,16 +55,20 @@ export const PostWithDetails = ({ id }: PostWithDetailsProps) => {
                 postOwnerId={post.owner_id}
               />
             ))}
-          </>
+          </div>
         ) : (
-          <>
-            {post.likes.map(like => (
-              <Like key={like.id} like={like} />
-            ))}
-          </>
-        )}
-      </div>
-    </>
+          <div className="mt-8 text-center text-lg">No comments yet</div>
+        )
+      ) : post.comments.length > 0 ? (
+        <div>
+          {post.likes.map(like => (
+            <Like key={like.id} like={like} />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-8 text-center text-lg">No likes yet</div>
+      )}
+    </div>
   )
 }
 
