@@ -9,18 +9,23 @@ import { dateTimeDistanceFilter } from '@/utils/date'
 
 interface Props {
   comment: CommentModel
+  postOwnerId: number
 }
 
-export const Comment = ({ comment }: Props) => {
-  const { author } = useAuthor(comment.owner_id)
+export const Comment = ({ comment, postOwnerId }: Props) => {
+  const { author, isLoading } = useAuthor(postOwnerId)
+
+  if (isLoading) return <div>loading...</div>
 
   return (
     <>
       <div className="relative z-0 mt-4 pb-10 text-secondary-900 transition-colors duration-300 dark:text-primary-900">
         <div className="px-4">
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between">
             <Author id={comment.owner_id} />
-            <div>{dateTimeDistanceFilter(comment.created_at)}</div>
+            <div className="text-xs">
+              {dateTimeDistanceFilter(comment.created_at)}
+            </div>
           </div>
           <div className="my-1 ml-14">
             <div className="mb-1 text-xs">
