@@ -9,5 +9,5 @@
 } */
 
 body {
-  @apply bg-primary-900 transition-colors duration-300 dark:bg-secondary-900;
+  @apply bg-primary-900 text-secondary-900 transition-colors duration-300 dark:bg-secondary-900 dark:text-primary-900;
 }

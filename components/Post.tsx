@@ -14,7 +14,7 @@ interface Props {
 export const Post = ({ post }: Props) => {
   return (
     <>
-      <article className="relative z-0 mt-4 pb-10 text-secondary-900 transition-colors duration-300 dark:text-primary-900">
+      <article className="relative z-0 mt-4 pb-10">
         <Link href={`/posts/${post.id}`}>
           <div className="px-4">
             <div className="flex items-center justify-between text-xs">
