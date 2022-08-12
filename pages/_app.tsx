@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider>
           <FetchTheme>
             <HeadBar />
-            <div className="mt-14">
+            <div className="mt-14 pb-60">
               <Component {...pageProps} />
             </div>
             <NavBar />
