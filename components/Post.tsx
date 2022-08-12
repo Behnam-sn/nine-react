@@ -13,7 +13,7 @@ interface Props {
 
 export const Post = ({ post }: Props) => {
   return (
-    <div className="relative z-0 mb-4 border-b-2 border-secondary-500 pb-10 text-secondary-900 transition-colors duration-300 dark:text-primary-900">
+    <article className="relative z-0 mb-4 border-b-2 border-secondary-500 pb-10 text-secondary-900 transition-colors duration-300 dark:text-primary-900">
       <Link href={`/posts/${post.id}`}>
         <div className="px-4">
           <div className="flex items-center justify-between text-xs">
@@ -33,7 +33,7 @@ export const Post = ({ post }: Props) => {
         </button>
         <div className="ml-2">{post.likes.length}</div>
       </div>
-    </div>
+    </article>
   )
 }
 interface AuthorProps {
