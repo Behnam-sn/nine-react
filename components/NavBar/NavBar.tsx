@@ -7,7 +7,7 @@ import { NavBarItem } from '@/components/NavBar/NavBarItem'
 
 export const NavBar = () => {
   return (
-    <div className="fixed bottom-0 z-20 flex w-full justify-between bg-primary-900 p-3 p-3 dark:bg-secondary-900 lg:hidden">
+    <div className="fixed bottom-0 z-20 flex w-full justify-between bg-primary-900 p-3 dark:bg-secondary-900 lg:hidden">
       <NavBarItem href="/">
         <HomeIcon className="h-8" />
       </NavBarItem>
