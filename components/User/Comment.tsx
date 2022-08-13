@@ -4,6 +4,7 @@ import { Author } from '@/components/Author'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
 import { Line } from '@/components/Line'
+import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 import { usePost } from '@/hooks/usePost'
 import type { CommentModel } from '@/models/comment.model'
@@ -53,7 +54,7 @@ interface PostProp {
 const Post = ({ id }: PostProp) => {
   const { post, isLoading, error } = usePost(id)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
   if (error) return <div>post not found</div>
 
   return (
@@ -76,7 +77,7 @@ interface PostAuthorProp {
 const PostAuthor = ({ id }: PostAuthorProp) => {
   const { author, isLoading } = useAuthor(id)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
 
   return (
     <Link href={`/users/${author.username}`}>

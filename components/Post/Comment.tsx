@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Author } from '@/components/Author'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import { Line } from '@/components/Line'
+import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 import type { CommentModel } from '@/models/comment.model'
 import { dateTimeDistanceFilter } from '@/utils/date'
@@ -15,7 +16,7 @@ interface Props {
 export const Comment = ({ comment, postOwnerId }: Props) => {
   const { author, isLoading } = useAuthor(postOwnerId)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
 
   return (
     <>

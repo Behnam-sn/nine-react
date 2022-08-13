@@ -7,6 +7,7 @@ import { Line } from '@/components/Line'
 import { Comment } from '@/components/Post/Comment'
 import { Like } from '@/components/Post/Like'
 import { Post } from '@/components/Post/Post'
+import { Spinner } from '@/components/Spinner'
 import { usePost } from '@/hooks/usePost'
 
 interface PostWithDetailsProps {
@@ -17,7 +18,7 @@ export const PostWithDetails = ({ id }: PostWithDetailsProps) => {
   const { post, isLoading, error } = usePost(id)
   const [section, setSection] = useState('comments')
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
   if (error) return <div>post not found</div>
 
   return (

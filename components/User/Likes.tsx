@@ -1,4 +1,5 @@
 import { Post } from '@/components/Post/Post'
+import { Spinner } from '@/components/Spinner'
 import { Comment } from '@/components/User/Comment'
 import { useComment } from '@/hooks/useComment'
 import { usePost } from '@/hooks/usePost'
@@ -34,7 +35,7 @@ interface LikedPostProps {
 export const LikedPost = ({ id }: LikedPostProps) => {
   const { post, isLoading, error } = usePost(id)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
   if (error) return <div>post not found</div>
 
   return <Post post={post} />
@@ -47,7 +48,7 @@ interface LikedCommentProps {
 export const LikedComment = ({ id }: LikedCommentProps) => {
   const { comment, isLoading, error } = useComment(id)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
   if (error) return <div>comment not found</div>
 
   return <Comment comment={comment} />

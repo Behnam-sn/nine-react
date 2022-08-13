@@ -2,12 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { Posts } from '@/components/Post/Posts'
+import { Spinner } from '@/components/Spinner'
 import { usePosts } from '@/hooks/usePosts'
 
 const Home = () => {
   const { posts, isLoading } = usePosts()
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner />
 
   return <Posts posts={posts} />
 }

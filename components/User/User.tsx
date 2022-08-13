@@ -4,6 +4,7 @@ import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
 import { Line } from '@/components/Line'
 import { Posts } from '@/components/Post/Posts'
+import { Spinner } from '@/components/Spinner'
 import { Comments } from '@/components/User/Comments'
 import { Likes } from '@/components/User/Likes'
 import { useUser } from '@/hooks/useUser'
@@ -16,8 +17,8 @@ export const User = ({ username }: Props) => {
   const { user, isLoading, error } = useUser(username)
   const [section, setSection] = useState('posts')
 
-  if (isLoading) return <div>loading...</div>
-  if (error) return <div>post not found</div>
+  if (isLoading) return <Spinner />
+  if (error) return <div>user not found</div>
 
   return (
     <>

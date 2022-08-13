@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
+import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 export const Author = ({ id }: Props) => {
   const { author, isLoading } = useAuthor(id)
 
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return <Spinner className="" />
 
   return (
     <div className="flex items-center text-xs">
