@@ -25,6 +25,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
+        <div className="px-4 py-1 text-2xl font-bold">Home</div>
         <Posts />
       </main>
     </>
