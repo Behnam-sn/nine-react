@@ -1,5 +1,6 @@
-import { CommentModel } from '@/models/comment.model'
-import { PostModel } from '@/models/post.model'
+import type { CommentModel } from '@/models/comment.model'
+import type { LikeModel } from '@/models/like.model'
+import type { PostModel } from '@/models/post.model'
 
 export interface UserModel {
   id: number
@@ -12,7 +13,7 @@ export interface UserModel {
   modified_at: string
   posts: [PostModel]
   comments: [CommentModel]
-  likes: []
+  likes: [LikeModel]
   followers: []
   followings: []
 }
