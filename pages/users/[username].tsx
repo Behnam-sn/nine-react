@@ -1,15 +1,25 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const User: NextPage = () => {
+import { User } from '@/components/User/User'
+
+const Page: NextPage = () => {
   const router = useRouter()
   const { username } = router.query
 
   return (
-    <div className="text-primary-900 dark:text-primary-100">
-      User: {username}
-    </div>
+    <>
+      <Head>
+        <title>{`Nine - ${username} page`}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <User username={username} />
+      </main>
+    </>
   )
 }
 
-export default User
+export default Page
