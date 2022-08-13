@@ -7,7 +7,7 @@ interface Props {
 
 export const Like = ({ like }: Props) => {
   return (
-    <div className="px-4 py-4 ">
+    <div className="px-4 pt-4 ">
       <Author id={like.owner_id} />
     </div>
   )
