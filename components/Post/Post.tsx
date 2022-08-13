@@ -21,7 +21,14 @@ export const Post = ({ post }: Props) => {
               <Author id={post.owner_id} />
               <div>{dateTimeDistanceFilter(post.created_at)}</div>
             </div>
-            <div className="my-1 ml-14">{post.text}</div>
+            <div className="my-1 ml-14">
+              <div className="mb-1">{post.text}</div>
+              {post.is_edited && (
+                <div className="text-xs text-primary-500 transition-colors duration-300 dark:text-primary-300">
+                  Edited
+                </div>
+              )}
+            </div>
           </div>
         </Link>
         <div className="absolute right-4 bottom-4 z-10 flex items-center justify-end">
