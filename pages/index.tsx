@@ -1,21 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import useSWR from 'swr'
 
-import { Post } from '@/components/Post/Post'
-import type { PostModel } from '@/models/post.model'
+import { Posts } from '@/components/Post/Posts'
+import { usePosts } from '@/hooks/usePosts'
 
-const API = '/posts/?skip=0&limit=100'
+const Home = () => {
+  const { posts, isLoading } = usePosts()
 
-const Posts = () => {
-  const { data, error } = useSWR(API)
+  if (isLoading) return <div>loading...</div>
 
-  if (!data || error) return <div>loading...</div>
-
-  return data.map((post: PostModel) => <Post key={post.id} post={post} />)
+  return <Posts posts={posts} />
 }
 
-const Home: NextPage = () => {
+const Page: NextPage = () => {
   return (
     <>
       <Head>
@@ -26,10 +23,10 @@ const Home: NextPage = () => {
 
       <main>
         <div className="px-4 py-1 text-2xl font-bold">Home</div>
-        <Posts />
+        <Home />
       </main>
     </>
   )
 }
 
-export default Home
+export default Page
