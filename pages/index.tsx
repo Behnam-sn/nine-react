@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import useSWR from 'swr'
 
-import { Post } from '@/components/Post'
+import { Post } from '@/components/Post/Post'
 import type { PostModel } from '@/models/post.model'
 
 const API = '/posts/?skip=0&limit=100'

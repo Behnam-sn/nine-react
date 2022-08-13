@@ -3,10 +3,10 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import { Comment } from '@/components/Comment'
-import { Like } from '@/components/Like'
 import { Line } from '@/components/Line'
-import { Post } from '@/components/Post'
+import { Comment } from '@/components/Post/Comment'
+import { Like } from '@/components/Post/Like'
+import { Post } from '@/components/Post/Post'
 import { usePost } from '@/hooks/usePost'
 
 interface PostWithDetailsProps {
