@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
 import { Line } from '@/components/Line'
 import { Posts } from '@/components/Post/Posts'
@@ -44,7 +45,12 @@ export const User = ({ username }: Props) => {
         </div>
 
         <div className="my-2">
-          <div className="text-3xl font-semibold">{user.name}</div>
+          <div className="flex items-baseline">
+            <div className="mr-1 text-3xl font-semibold">{user.name}</div>
+            {user.is_superuser && (
+              <BadgeIcon className="h-5 w-5 text-blue-500" />
+            )}
+          </div>
           <div className="mt-1 text-sm text-primary-300">{`@${user.username}`}</div>
           <div>{user.bio}</div>
         </div>

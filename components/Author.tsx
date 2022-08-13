@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
 import { useAuthor } from '@/hooks/useAuthor'
 
@@ -26,6 +27,9 @@ export const Author = ({ id }: Props) => {
           <a className="text-xs text-primary-300">{`@${author.username}`}</a>
         </Link>
       </div>
+      {author.is_superuser && (
+        <BadgeIcon className="ml-1 h-4 w-4 text-blue-500" />
+      )}
     </div>
   )
 }
