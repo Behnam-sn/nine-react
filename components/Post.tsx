@@ -26,11 +26,11 @@ export const Post = ({ post }: Props) => {
         </Link>
         <div className="absolute right-4 bottom-4 z-10 flex items-center justify-end">
           <button className="ml-4">
-            <CommentIcon className="h-5 fill-primary-900 transition-colors duration-300 dark:fill-primary-100" />
+            <CommentIcon className="h-6 w-6" />
           </button>
           <div className="ml-2">{post.comments.length}</div>
           <button className="ml-4">
-            <LikeIcon className="h-5 fill-primary-900 transition-colors duration-300 dark:fill-primary-100" />
+            <LikeIcon className="h-6 w-6" />
           </button>
           <div className="ml-2">{post.likes.length}</div>
         </div>
