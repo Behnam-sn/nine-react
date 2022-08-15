@@ -14,23 +14,19 @@ export const Author = ({ id }: Props) => {
   if (isLoading) return <Spinner className="" />
 
   return (
-    <div className="flex items-center text-xs">
-      <Link href={`/users/${author.username}`}>
-        <a className="mr-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
+    <Link href={`/users/${author.username}`}>
+      <div className="flex items-center text-xs">
+        <div className="mr-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
           <UserCircleIcon className="h-9 w-9 text-primary-100 transition-colors duration-300 dark:text-primary-900" />
-        </a>
-      </Link>
-      <div className="flex flex-col">
-        <Link href={`/users/${author.username}`}>
-          <a>{author.name}</a>
-        </Link>
-        <Link href={`/users/${author.username}`}>
-          <a className="text-xs text-primary-300">{`@${author.username}`}</a>
-        </Link>
+        </div>
+        <div className="flex flex-col">
+          <div>{author.name}</div>
+          <div>{`@${author.username}`}</div>
+        </div>
+        {author.is_superuser && (
+          <BadgeIcon className="ml-1 h-4 w-4 text-blue-500" />
+        )}
       </div>
-      {author.is_superuser && (
-        <BadgeIcon className="ml-1 h-4 w-4 text-blue-500" />
-      )}
-    </div>
+    </Link>
   )
 }
