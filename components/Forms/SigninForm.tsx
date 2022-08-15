@@ -27,7 +27,7 @@ export const SigninForm = () => {
         <Form>
           <TextInput name="username" type="text" placeholder="Username" />
           <TextInput name="password" type="password" placeholder="Password" />
-          <SubmitButton text="Sign in" />
+          <SubmitButton text="Sign In" />
         </Form>
       </Formik>
     </div>
