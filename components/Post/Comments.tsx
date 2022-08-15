@@ -63,7 +63,7 @@ const Comment = ({ comment, postOwnerId }: CommentProps) => {
         </div>
         <div className="absolute right-4 bottom-4 z-10 flex items-center justify-end">
           <button className="ml-4">
-            <LikeIcon className="h-6 w-6" />
+            <LikeIcon className="h-6 w-6 stroke-2" />
           </button>
           <div className="ml-2">{comment.likes.length}</div>
         </div>

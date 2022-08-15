@@ -34,7 +34,9 @@ export const User = ({ user }: Props) => {
       <div className="my-2">
         <div className="flex items-baseline">
           <div className="mr-1 text-3xl font-semibold">{user.name}</div>
-          {user.is_superuser && <BadgeIcon className="h-5 w-5 text-blue-500" />}
+          {user.is_superuser && (
+            <BadgeIcon className="h-5 w-5 stroke-2 text-blue-500" />
+          )}
         </div>
         <div className="mt-1 text-sm text-primary-300">{`@${user.username}`}</div>
         <div>{user.bio}</div>
