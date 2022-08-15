@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { Posts } from '@/components/Post/Posts'
+import { Post } from '@/components/Post/Post'
 import { Spinner } from '@/components/Spinner'
 import { usePosts } from '@/hooks/usePosts'
 
@@ -10,7 +10,17 @@ const Home = () => {
 
   if (isLoading) return <Spinner />
 
-  return <Posts posts={posts} />
+  if (posts.length > 0) {
+    return (
+      <div>
+        {posts.map(post => (
+          <Post key={post.id} post={post} />
+        ))}
+      </div>
+    )
+  } else {
+    return <div className="mt-8 text-center text-lg">No posts yet</div>
+  }
 }
 
 const Page: NextPage = () => {

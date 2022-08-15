@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { Line } from '@/components/Line'
-import { Posts } from '@/components/Post/Posts'
 import { Spinner } from '@/components/Spinner'
+import { Posts } from '@/components/User/Posts'
 import { User } from '@/components/User/User'
 import { useUser } from '@/hooks/useUser'
 
