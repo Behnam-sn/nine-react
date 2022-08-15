@@ -11,15 +11,19 @@ export const NavBar = () => {
       <NavBarItem href="/">
         <HomeIcon className="h-9 w-9 text-primary-900 transition-colors duration-300 dark:text-primary-100" />
       </NavBarItem>
+
       <NavBarItem href="/search">
         <SearchIcon className="h-9 w-9 text-primary-900 transition-colors duration-300 dark:text-primary-100" />
       </NavBarItem>
+
       <NavBarItem href="/">
         <PlusIcon className="h-9 w-9 text-primary-900 transition-colors duration-300 dark:text-primary-100" />
       </NavBarItem>
+
       <NavBarItem href="/notification">
         <BellIcon className="h-9 w-9 text-primary-900 transition-colors duration-300 dark:text-primary-100" />
       </NavBarItem>
+
       <NavBarItem href="/">
         <UserIcon className="h-9 w-9 text-primary-900 transition-colors duration-300 dark:text-primary-100" />
       </NavBarItem>
