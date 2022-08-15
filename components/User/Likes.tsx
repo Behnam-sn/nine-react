@@ -1,4 +1,4 @@
-import { Comment } from '@/components/Comments/Comment'
+import { Comment } from '@/components/Comment/Comment'
 import { Post } from '@/components/Post/Post'
 import { Spinner } from '@/components/Spinner'
 import { useComment } from '@/hooks/useComment'

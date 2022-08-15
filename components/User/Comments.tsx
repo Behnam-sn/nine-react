@@ -1,4 +1,4 @@
-import { Comment } from '@/components/Comments/Comment'
+import { Comment } from '@/components/Comment/Comment'
 import type { CommentModel } from '@/models/comment.model'
 
 interface Props {
