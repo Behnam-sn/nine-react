@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import type { PostModel } from '@/models/post.model'
 
 interface Props {
-  posts: [PostModel]
+  posts: PostModel[]
   isLoading: boolean
   error: any
 }

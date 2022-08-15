@@ -9,7 +9,7 @@ import type { CommentModel } from '@/models/comment.model'
 import { dateTimeDistanceFilter } from '@/utils/date'
 
 interface CommentsProps {
-  comments: [CommentModel]
+  comments: CommentModel[]
   postOwnerId: number
 }
 

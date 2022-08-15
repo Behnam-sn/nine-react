@@ -6,7 +6,7 @@ import { usePost } from '@/hooks/usePost'
 import type { LikeModel } from '@/models/like.model'
 
 interface Props {
-  likes: [LikeModel]
+  likes: LikeModel[]
 }
 
 export const Likes = ({ likes }: Props) => {

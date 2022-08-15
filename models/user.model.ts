@@ -11,9 +11,9 @@ export interface UserModel {
   is_superuser: boolean
   created_at: string
   modified_at: string
-  posts: [PostModel]
-  comments: [CommentModel]
-  likes: [LikeModel]
+  posts: PostModel[]
+  comments: CommentModel[]
+  likes: LikeModel[]
   followers: []
   followings: []
 }

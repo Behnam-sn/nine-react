@@ -8,9 +8,8 @@ export interface PostModel {
   is_active: boolean
   created_at: string
   modified_at: string
-
-  comments: [CommentModel]
-  likes: [PostLike]
+  comments: CommentModel[]
+  likes: PostLike[]
 }
 
 export interface PostLike {

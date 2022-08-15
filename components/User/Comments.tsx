@@ -2,7 +2,7 @@ import { Comment } from '@/components/Comments/Comment'
 import type { CommentModel } from '@/models/comment.model'
 
 interface Props {
-  comments: [CommentModel]
+  comments: CommentModel[]
 }
 
 export const Comments = ({ comments }: Props) => {

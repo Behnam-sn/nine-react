@@ -2,7 +2,7 @@ import { Post } from '@/components/Post/Post'
 import type { PostModel } from '@/models/post.model'
 
 interface Props {
-  posts: [PostModel]
+  posts: PostModel[]
 }
 
 export const Posts = ({ posts }: Props) => {

@@ -2,7 +2,7 @@ import { Author } from '@/components/Author'
 import type { PostLike } from '@/models/post.model'
 
 interface LikesProps {
-  likes: [PostLike]
+  likes: PostLike[]
 }
 
 export const Likes = ({ likes }: LikesProps) => {
