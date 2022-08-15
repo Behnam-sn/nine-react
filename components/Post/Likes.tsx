@@ -1,4 +1,4 @@
-import { Like } from '@/components/Post/Like'
+import { Author } from '@/components/Author'
 import type { PostLike } from '@/models/post.model'
 
 interface LikesProps {
@@ -17,4 +17,16 @@ export const Likes = ({ likes }: LikesProps) => {
   } else {
     return <div className="mt-8 text-center text-lg">No likes yet</div>
   }
+}
+
+interface LikeProps {
+  like: PostLike
+}
+
+const Like = ({ like }: LikeProps) => {
+  return (
+    <div className="px-4 pt-4 ">
+      <Author id={like.owner_id} />
+    </div>
+  )
 }
