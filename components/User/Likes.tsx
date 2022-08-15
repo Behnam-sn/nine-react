@@ -1,6 +1,6 @@
+import { Comment } from '@/components/Comments/Comment'
 import { Post } from '@/components/Post/Post'
 import { Spinner } from '@/components/Spinner'
-import { Comment } from '@/components/User/Comment'
 import { useComment } from '@/hooks/useComment'
 import { usePost } from '@/hooks/usePost'
 import type { LikeModel } from '@/models/like.model'
