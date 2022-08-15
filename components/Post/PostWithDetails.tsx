@@ -29,7 +29,7 @@ export const PostWithDetails = ({ id }: Props) => {
           className={`my-3 ml-2 mr-1 flex w-full justify-center rounded-md py-2 font-semibold transition-colors duration-300 ${
             section === 'comments'
               ? 'bg-primary-300 text-primary-100 dark:bg-primary-600'
-              : 'text-primary-900 dark:text-pink-100'
+              : 'text-primary-900 dark:text-primary-100'
           }`}
           onClick={() => setSection('comments')}
         >
@@ -39,7 +39,7 @@ export const PostWithDetails = ({ id }: Props) => {
           className={`my-3 ml-1 mr-2 flex w-full justify-center rounded-md py-2 font-semibold transition-colors duration-300 ${
             section === 'likes'
               ? 'bg-primary-300 text-primary-100 dark:bg-primary-600'
-              : 'text-primary-900 dark:text-pink-100'
+              : 'text-primary-900 dark:text-primary-100'
           }`}
           onClick={() => setSection('likes')}
         >
