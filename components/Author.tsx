@@ -24,7 +24,7 @@ export const Author = ({ id }: Props) => {
           <div className="text-xs text-primary-300">{`@${author.username}`}</div>
         </div>
         {author.is_superuser && (
-          <BadgeIcon className="ml-1 h-4 w-4 text-blue-500" />
+          <BadgeIcon className="ml-1 h-4 w-4 stroke-2 text-blue-500" />
         )}
       </div>
     </Link>
