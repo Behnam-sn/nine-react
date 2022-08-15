@@ -27,9 +27,9 @@ export const SignupForm = () => {
         }}
       >
         <Form>
-          <TextInput name="username" type="text" placeholder="username" />
-          <TextInput name="name" type="text" placeholder="name" />
-          <TextInput name="password" type="password" placeholder="password" />
+          <TextInput name="username" type="text" placeholder="Username" />
+          <TextInput name="name" type="text" placeholder="Name" />
+          <TextInput name="password" type="password" placeholder="Password" />
           <SubmitButton text="Sign Up" />
         </Form>
       </Formik>
