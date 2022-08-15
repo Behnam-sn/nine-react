@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
+import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
 
 export const LoginForm = () => {
@@ -26,13 +27,7 @@ export const LoginForm = () => {
         <Form>
           <TextInput name="username" type="text" placeholder="username" />
           <TextInput name="password" type="password" placeholder="password" />
-
-          <button
-            type="submit"
-            className="mx-auto block rounded-full bg-blue-600 px-8 py-3 font-medium text-primary-100 outline-none transition-colors duration-300 hover:bg-blue-700"
-          >
-            Login
-          </button>
+          <SubmitButton text="Login" />
         </Form>
       </Formik>
     </div>
