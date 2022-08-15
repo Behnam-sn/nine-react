@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { LogInIcon } from '@/components/icons/LogInIcon'
 import { MoonIcon } from '@/components/icons/MoonIcon'
 import { SunIcon } from '@/components/icons/SunIcon'
@@ -31,7 +33,11 @@ export const HeadBar = () => {
       </div>
       <div className="w-full text-center text-lg font-bold">nine</div>
       <div className="w-full">
-        <LogInIcon className="mr-0 ml-auto h-9 w-9" />
+        <Link href="/login">
+          <a>
+            <LogInIcon className="mr-0 ml-auto h-9 w-9" />
+          </a>
+        </Link>
       </div>
     </header>
   )
