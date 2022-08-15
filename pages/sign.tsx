@@ -2,13 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 
-import { LoginForm } from '@/components/Forms/LoginForm'
+import { SigninForm } from '@/components/Forms/SigninForm'
 import { SignupForm } from '@/components/Forms/SignupForm'
 
 interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
-  const [section, setSection] = useState('login')
+  const [section, setSection] = useState('signin')
 
   return (
     <>
@@ -19,7 +19,7 @@ const Page: NextPage<Props> = ({}) => {
       <main>
         <div className="px-8 pt-10">
           <div>
-            {section === 'login' ? (
+            {section === 'signin' ? (
               <button
                 className="ml-auto mb-4 block rounded-full border-2 border-primary-700 bg-transparent px-5 py-2 text-sm font-medium text-primary-700 transition-colors duration-300 dark:border-primary-200 dark:text-primary-200"
                 onClick={() => setSection('signup')}
@@ -29,13 +29,13 @@ const Page: NextPage<Props> = ({}) => {
             ) : (
               <button
                 className="ml-auto mb-4 block rounded-full border-2 border-primary-700 bg-transparent px-5 py-2 text-sm font-medium text-primary-700 transition-colors duration-300 dark:border-primary-200 dark:text-primary-200"
-                onClick={() => setSection('login')}
+                onClick={() => setSection('signin')}
               >
-                Login
+                Sign In
               </button>
             )}
           </div>
-          {section === 'login' ? <LoginForm /> : <SignupForm />}
+          {section === 'signin' ? <SigninForm /> : <SignupForm />}
         </div>
       </main>
     </>

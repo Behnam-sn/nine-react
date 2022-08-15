@@ -33,7 +33,7 @@ export const HeadBar = () => {
       </div>
       <div className="w-full text-center text-lg font-bold">nine</div>
       <div className="w-full">
-        <Link href="/login">
+        <Link href="/sign">
           <a>
             <LogInIcon className="mr-0 ml-auto h-9 w-9" />
           </a>

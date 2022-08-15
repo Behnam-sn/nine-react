@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
 
-export const LoginForm = () => {
+export const SigninForm = () => {
   return (
     <div>
       <Formik
@@ -27,7 +27,7 @@ export const LoginForm = () => {
         <Form>
           <TextInput name="username" type="text" placeholder="username" />
           <TextInput name="password" type="password" placeholder="password" />
-          <SubmitButton text="Login" />
+          <SubmitButton text="Sign in" />
         </Form>
       </Formik>
     </div>
