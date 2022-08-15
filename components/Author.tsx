@@ -21,7 +21,7 @@ export const Author = ({ id }: Props) => {
         </div>
         <div className="flex flex-col">
           <div>{author.name}</div>
-          <div>{`@${author.username}`}</div>
+          <div className="text-xs text-primary-300">{`@${author.username}`}</div>
         </div>
         {author.is_superuser && (
           <BadgeIcon className="ml-1 h-4 w-4 text-blue-500" />
