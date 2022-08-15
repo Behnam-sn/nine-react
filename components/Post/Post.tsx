@@ -17,9 +17,11 @@ export const Post = ({ post }: Props) => {
       <article className="relative z-0 mt-4 pb-10">
         <Link href={`/posts/${post.id}`}>
           <div className="px-4">
-            <div className="flex items-center justify-between text-xs">
+            <div className="flex items-center justify-between">
               <Author id={post.owner_id} />
-              <div>{dateTimeDistanceFilter(post.created_at)}</div>
+              <div className="text-xs font-light">
+                {dateTimeDistanceFilter(post.created_at)}
+              </div>
             </div>
             <div className="my-1 ml-14">
               <div className="mb-1">{post.text}</div>
