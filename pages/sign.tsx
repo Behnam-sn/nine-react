@@ -8,34 +8,34 @@ import { SignupForm } from '@/components/Forms/SignupForm'
 interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
-  const [section, setSection] = useState('signin')
+  const [section, setSection] = useState('Sign In')
 
   return (
     <>
       <Head>
-        <title>page</title>
+        <title>{`Nine - ${section}`}</title>
       </Head>
 
       <main>
         <div className="px-8 pt-10">
           <div>
-            {section === 'signin' ? (
+            {section === 'Sign In' ? (
               <button
                 className="ml-auto mb-4 block rounded-full border-2 border-primary-700 bg-transparent px-5 py-2 text-sm font-medium text-primary-700 transition-colors duration-300 dark:border-primary-200 dark:text-primary-200"
-                onClick={() => setSection('signup')}
+                onClick={() => setSection('Sign Up')}
               >
                 Sign Up
               </button>
             ) : (
               <button
                 className="ml-auto mb-4 block rounded-full border-2 border-primary-700 bg-transparent px-5 py-2 text-sm font-medium text-primary-700 transition-colors duration-300 dark:border-primary-200 dark:text-primary-200"
-                onClick={() => setSection('signin')}
+                onClick={() => setSection('Sign In')}
               >
                 Sign In
               </button>
             )}
           </div>
-          {section === 'signin' ? <SigninForm /> : <SignupForm />}
+          {section === 'Sign In' ? <SigninForm /> : <SignupForm />}
         </div>
       </main>
     </>
