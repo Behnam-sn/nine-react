@@ -1,4 +1,6 @@
 import { Form, Formik } from 'formik'
+import { useRouter } from 'next/router'
+import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
@@ -6,6 +8,9 @@ import { TextInput } from '@/components/Forms/TextInput'
 import { SignIn } from '@/utils/auth'
 
 export const SignInForm = () => {
+  const router = useRouter()
+  const { mutate } = useSWRConfig()
+
   return (
     <div>
       <Formik
@@ -19,6 +24,8 @@ export const SignInForm = () => {
         })}
         onSubmit={async values => {
           await SignIn(values.username, values.password)
+          mutate('/users/current-user')
+          router.push('/')
         }}
       >
         {({ isSubmitting }) => (
