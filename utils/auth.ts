@@ -9,7 +9,7 @@ export const SignIn = async (username: string, password: string) => {
   User.append('password', password)
 
   await axios
-    .post('auth/signin', User)
+    .post('/auth/signin', User)
     .then(response => {
       let token = response.data.access_token
       setCookie('token', token, 7)
@@ -22,7 +22,7 @@ export const SignIn = async (username: string, password: string) => {
 
 export const SignUp = async (values: UserCreateModel) => {
   await axios
-    .post('auth/signup', values)
+    .post('/auth/signup', values)
     .then(response => {
       if (response.status == 200) {
         SignIn(values.username, values.password)
