@@ -8,7 +8,7 @@ export const TextInput = (props: any) => {
         className={`mb-2 block w-full rounded-full bg-primary-200 py-3 px-4 text-sm text-primary-900 outline-none ring-2 transition-colors duration-300 dark:bg-primary-600 dark:text-primary-100 ${
           meta.touched && meta.error
             ? 'ring-red-600'
-            : 'ring-primary-400 focus:ring-blue-500'
+            : 'ring-primary-300 focus:ring-blue-500 dark:ring-primary-400'
         }`}
         {...field}
         {...props}
