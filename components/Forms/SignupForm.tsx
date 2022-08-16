@@ -26,12 +26,14 @@ export const SignupForm = () => {
           alert(JSON.stringify(values, null, 2))
         }}
       >
-        <Form>
-          <TextInput name="username" type="text" placeholder="Username" />
-          <TextInput name="name" type="text" placeholder="Name" />
-          <TextInput name="password" type="password" placeholder="Password" />
-          <SubmitButton text="Sign Up" />
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <TextInput name="username" type="text" placeholder="Username" />
+            <TextInput name="name" type="text" placeholder="Name" />
+            <TextInput name="password" type="password" placeholder="Password" />
+            <SubmitButton text="Sign Up" disabled={isSubmitting} />
+          </Form>
+        )}
       </Formik>
     </div>
   )
