@@ -18,3 +18,7 @@ export interface PostLike {
   owner_id: number
   created_at: string
 }
+
+export interface PostCreateModel {
+  text: string
+}

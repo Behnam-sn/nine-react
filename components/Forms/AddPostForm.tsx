@@ -1,10 +1,14 @@
 import { Form, Formik } from 'formik'
+import { useRouter } from 'next/router'
 import * as Yup from 'yup'
 
 import { CustomTextarea } from '@/components/Forms/CustomTextarea'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
+import { CreatePost } from '@/utils/post'
 
 export const AddPostForm = () => {
+  const router = useRouter()
+
   return (
     <div>
       <Formik
@@ -17,8 +21,8 @@ export const AddPostForm = () => {
             .required('Required')
         })}
         onSubmit={async values => {
-          //   await SignIn(values.username, values.password)
-          //   router.push('/')
+          await CreatePost(values)
+          router.push('/')
         }}
       >
         {({ isSubmitting }) => (
