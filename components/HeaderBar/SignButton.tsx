@@ -8,7 +8,7 @@ import { useCurrentUser } from '@/hooks/useCurrentUser'
 export const SignButton = () => {
   const { isLoading, loggedOut } = useCurrentUser()
 
-  if (isLoading) return <Spinner className="" />
+  if (isLoading) return <Spinner className="flex justify-end" />
 
   if (loggedOut)
     return (

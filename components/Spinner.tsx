@@ -3,10 +3,10 @@ interface Props {
 }
 
 export const Spinner = ({
-  className = 'flex w-full justify-center'
+  className = 'my-3 flex w-full justify-center'
 }: Props) => {
   return (
-    <div className={`my-3 ${className}`} role="status">
+    <div className={className} role="status">
       <svg
         aria-hidden="true"
         className="h-8 w-8 animate-spin fill-primary-900 text-gray-200 transition-colors duration-300 dark:fill-primary-100 dark:text-gray-600"

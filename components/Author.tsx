@@ -11,7 +11,7 @@ interface Props {
 export const Author = ({ id }: Props) => {
   const { author, isLoading } = useAuthor(id)
 
-  if (isLoading) return <Spinner className="" />
+  if (isLoading) return <Spinner className="my-2" />
 
   return (
     <Link href={`/users/${author.username}`}>
