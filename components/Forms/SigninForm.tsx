@@ -1,8 +1,31 @@
+import axios from 'axios'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
+
+interface SigninProps {
+  username: string
+  password: string
+}
+
+const Signin = async (values: SigninProps) => {
+  const User = new FormData()
+  User.append('username', values.username)
+  User.append('password', values.password)
+
+  await axios
+    .post('auth/signin', User)
+    .then(response => {
+      let token = response.data.access_token
+      // setCookie("jwt_token", token, 5);
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
 
 export const SigninForm = () => {
   return (
@@ -13,15 +36,11 @@ export const SigninForm = () => {
           password: ''
         }}
         validationSchema={Yup.object({
-          username: Yup.string()
-            .max(15, 'Must be 15 characters or less')
-            .min(5, 'Must be 5 characters or more')
-            .required('Required'),
+          username: Yup.string().required('Required'),
           password: Yup.string().required('Required')
         })}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500))
-          alert(JSON.stringify(values, null, 2))
+        onSubmit={async (values: SigninProps) => {
+          await Signin(values)
         }}
       >
         {({ isSubmitting }) => (
