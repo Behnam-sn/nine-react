@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
+import { setCookie } from '@/utils/cookie'
 
 interface SigninProps {
   username: string
@@ -19,7 +20,7 @@ const Signin = async (values: SigninProps) => {
     .post('auth/signin', User)
     .then(response => {
       let token = response.data.access_token
-      // setCookie("jwt_token", token, 5);
+      setCookie('token', token, 7)
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
     })
     .catch(error => {
