@@ -1,6 +1,6 @@
 import { useField } from 'formik'
 
-export const TextInput = (props: any) => {
+export const CustomInput = (props: any) => {
   const [field, meta] = useField(props)
 
   return (

@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
 
+import { CustomInput } from '@/components/Forms/CustomInput'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
-import { TextInput } from '@/components/Forms/TextInput'
 import { SignIn } from '@/utils/auth'
 
 export const SignInForm = () => {
@@ -30,8 +30,12 @@ export const SignInForm = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <TextInput name="username" type="text" placeholder="Username" />
-            <TextInput name="password" type="password" placeholder="Password" />
+            <CustomInput name="username" type="text" placeholder="Username" />
+            <CustomInput
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
             <SubmitButton
               className="mx-auto"
               text="Sign In"
