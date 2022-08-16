@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 
-import { SigninForm } from '@/components/Forms/SigninForm'
-import { SignupForm } from '@/components/Forms/SignupForm'
+import { SignInForm } from '@/components/Forms/SignInForm'
+import { SignUpForm } from '@/components/Forms/SignUpForm'
 
 interface Props {}
 
@@ -35,7 +35,7 @@ const Page: NextPage<Props> = ({}) => {
               </button>
             )}
           </div>
-          {section === 'Sign In' ? <SigninForm /> : <SignupForm />}
+          {section === 'Sign In' ? <SignInForm /> : <SignUpForm />}
         </div>
       </main>
     </>

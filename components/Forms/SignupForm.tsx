@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
 
-export const SignupForm = () => {
+export const SignUpForm = () => {
   return (
     <div>
       <Formik
