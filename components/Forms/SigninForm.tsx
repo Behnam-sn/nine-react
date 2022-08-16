@@ -1,32 +1,9 @@
-import axios from 'axios'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
-import { setCookie } from '@/utils/cookie'
-
-interface SigninProps {
-  username: string
-  password: string
-}
-
-const Signin = async (values: SigninProps) => {
-  const User = new FormData()
-  User.append('username', values.username)
-  User.append('password', values.password)
-
-  await axios
-    .post('auth/signin', User)
-    .then(response => {
-      let token = response.data.access_token
-      setCookie('token', token, 7)
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
+import { SignIn } from '@/utils/sign'
 
 export const SigninForm = () => {
   return (
@@ -40,8 +17,8 @@ export const SigninForm = () => {
           username: Yup.string().required('Required'),
           password: Yup.string().required('Required')
         })}
-        onSubmit={async (values: SigninProps) => {
-          await Signin(values)
+        onSubmit={async values => {
+          await SignIn(values.username, values.password)
         }}
       >
         {({ isSubmitting }) => (
