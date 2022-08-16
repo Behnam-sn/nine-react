@@ -22,7 +22,7 @@ export const AddPostForm = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="px-5 pt-5">
+          <Form>
             <CustomTextarea name="text" placeholder="what's in your mind..." />
             <SubmitButton
               className="ml-auto"
