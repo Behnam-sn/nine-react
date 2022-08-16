@@ -2,6 +2,7 @@ import { useField } from 'formik'
 
 export const TextInput = (props: any) => {
   const [field, meta] = useField(props)
+
   return (
     <div className="mb-4">
       <input
