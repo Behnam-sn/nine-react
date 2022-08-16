@@ -15,8 +15,8 @@ export const SignInForm = () => {
     <div>
       <Formik
         initialValues={{
-          username: '',
-          password: ''
+          username: 'a',
+          password: 'a'
         }}
         validationSchema={Yup.object({
           username: Yup.string().required('Required'),
