@@ -38,7 +38,11 @@ export const SignUpForm = () => {
             <TextInput name="username" type="text" placeholder="Username" />
             <TextInput name="name" type="text" placeholder="Name" />
             <TextInput name="password" type="password" placeholder="Password" />
-            <SubmitButton text="Sign Up" disabled={isSubmitting} />
+            <SubmitButton
+              className="mx-auto"
+              text="Sign Up"
+              disabled={isSubmitting}
+            />
           </Form>
         )}
       </Formik>

@@ -37,7 +37,11 @@ export const AddPostForm = () => {
           <Form>
             <CustomTextarea name="text" placeholder="text" />
 
-            <SubmitButton text="Post" disabled={isSubmitting} />
+            <SubmitButton
+              className="ml-auto"
+              text="Post"
+              disabled={isSubmitting}
+            />
           </Form>
         )}
       </Formik>
