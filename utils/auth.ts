@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import type { UserCreateModel } from '@/models/user.model'
 import { setCookie } from '@/utils/cookie'
 
 export const SignIn = async (username: string, password: string) => {
@@ -19,7 +20,18 @@ export const SignIn = async (username: string, password: string) => {
     })
 }
 
-export const SignUp = async () => {}
+export const SignUp = async (values: UserCreateModel) => {
+  await axios
+    .post('auth/signup', values)
+    .then(response => {
+      if (response.status == 200) {
+        SignIn(values.username, values.password)
+      }
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
 
 export const SignOut = () => {
   document.cookie = 'jwt_token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'

@@ -1,10 +1,16 @@
 import { Form, Formik } from 'formik'
+import { useRouter } from 'next/router'
+import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
+import { SignUp } from '@/utils/auth'
 
 export const SignUpForm = () => {
+  const router = useRouter()
+  const { mutate } = useSWRConfig()
+
   return (
     <div>
       <Formik
@@ -22,8 +28,9 @@ export const SignUpForm = () => {
           password: Yup.string().required('Required')
         })}
         onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500))
-          alert(JSON.stringify(values, null, 2))
+          await SignUp(values)
+          mutate('/users/current-user')
+          router.push('/')
         }}
       >
         {({ isSubmitting }) => (
