@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
 import { Author } from '@/components/Author'
+import { DateDistance } from '@/components/DateDistance'
 import { CommentIcon } from '@/components/icons/CommentIcon'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import { Line } from '@/components/Line'
 import type { PostModel } from '@/models/post.model'
-import { dateTimeDistanceFilter } from '@/utils/date'
 
 interface Props {
   post: PostModel
@@ -19,9 +19,7 @@ export const Post = ({ post }: Props) => {
           <div className="px-4">
             <div className="flex items-center justify-between">
               <Author id={post.owner_id} />
-              <div className="text-xs font-light">
-                {dateTimeDistanceFilter(post.created_at)}
-              </div>
+              <DateDistance date={post.created_at} />
             </div>
             <div className="my-1 ml-14">
               <div className="mb-1">{post.text}</div>

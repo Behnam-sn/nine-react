@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
 import { Author } from '@/components/Author'
+import { DateDistance } from '@/components/DateDistance'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import { Line } from '@/components/Line'
 import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 import type { CommentModel } from '@/models/comment.model'
-import { dateTimeDistanceFilter } from '@/utils/date'
 
 interface CommentsProps {
   comments: CommentModel[]
@@ -47,9 +47,7 @@ const Comment = ({ comment, postOwnerId }: CommentProps) => {
         <div className="px-4">
           <div className="flex items-center justify-between">
             <Author id={comment.owner_id} />
-            <div className="text-xs">
-              {dateTimeDistanceFilter(comment.created_at)}
-            </div>
+            <DateDistance date={comment.created_at} />
           </div>
           <div className="my-1 ml-14">
             <div className="mb-1 text-xs">
