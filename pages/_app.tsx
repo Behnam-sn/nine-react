@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { SWRConfig } from 'swr'
 
 import { FetchTheme } from '@/components/FetchTheme'
-import { HeadBar } from '@/components/HeadBar'
+import { HeaderBar } from '@/components/Header/Header'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { fetcher } from '@/utils/fetcher'
@@ -17,13 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <SWRConfig
         value={{
-          refreshInterval: 30000,
+          refreshInterval: 3000,
           fetcher: fetcher
         }}
       >
         <ThemeProvider>
           <FetchTheme>
-            <HeadBar />
+            <HeaderBar />
             <div className="mt-16 pb-60">
               <Component {...pageProps} />
             </div>
