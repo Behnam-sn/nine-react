@@ -1,20 +1,8 @@
-import { Form, Formik, useField } from 'formik'
+import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
+import { CustomTextarea } from '@/components/Forms/CustomTextarea'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
-
-const CustomTextarea = (props: any) => {
-  const [field, meta] = useField(props)
-
-  return (
-    <div className="mb-4">
-      <textarea {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="ml-4 text-sm text-red-600">{meta.error}</div>
-      ) : null}
-    </div>
-  )
-}
 
 export const AddPostForm = () => {
   return (
