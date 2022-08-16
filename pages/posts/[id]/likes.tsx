@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { Line } from '@/components/Line'
+import { Divider } from '@/components/Divider'
 import { Likes } from '@/components/Post/Likes'
 import { Post } from '@/components/Post/Post'
 import { Spinner } from '@/components/Spinner'
@@ -35,7 +35,7 @@ export const PostWithLikes = ({ id }: PostWithLikesProps) => {
           </a>
         </Link>
       </div>
-      <Line />
+      <Divider />
 
       <Likes likes={post.likes} />
     </>

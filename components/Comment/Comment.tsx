@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { Author } from '@/components/Author'
 import { DateDistance } from '@/components/DateDistance'
+import { Divider } from '@/components/Divider'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
-import { Line } from '@/components/Line'
 import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 import { usePost } from '@/hooks/usePost'
@@ -39,7 +39,7 @@ export const Comment = ({ comment }: Props) => {
         </div>
       </div>
 
-      <Line />
+      <Divider />
     </>
   )
 }

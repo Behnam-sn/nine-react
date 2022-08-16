@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { Line } from '@/components/Line'
+import { Divider } from '@/components/Divider'
 import { Spinner } from '@/components/Spinner'
 import { Posts } from '@/components/User/Posts'
 import { User } from '@/components/User/User'
@@ -23,7 +23,7 @@ const UserWithPosts = ({ username }: UserWithPostsProps) => {
     <>
       <User user={user} />
 
-      <Line />
+      <Divider />
       <div className="flex">
         <Link href={`/users/${user.username}`}>
           <a className="my-3 ml-2 mr-1 flex w-full justify-center rounded-md bg-primary-300 py-2 font-semibold text-primary-100 transition-colors duration-300 dark:bg-primary-600">
@@ -41,7 +41,7 @@ const UserWithPosts = ({ username }: UserWithPostsProps) => {
           </a>
         </Link>
       </div>
-      <Line />
+      <Divider />
 
       <Posts posts={user.posts} />
     </>

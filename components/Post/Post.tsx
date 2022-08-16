@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { Author } from '@/components/Author'
 import { DateDistance } from '@/components/DateDistance'
+import { Divider } from '@/components/Divider'
 import { CommentIcon } from '@/components/icons/CommentIcon'
 import { LikeIcon } from '@/components/icons/LikeIcon'
-import { Line } from '@/components/Line'
 import type { PostModel } from '@/models/post.model'
 
 interface Props {
@@ -42,7 +42,7 @@ export const Post = ({ post }: Props) => {
           <div className="ml-2">{post.likes.length}</div>
         </div>
       </article>
-      <Line />
+      <Divider />
     </>
   )
 }

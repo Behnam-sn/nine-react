@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import { Author } from '@/components/Author'
 import { DateDistance } from '@/components/DateDistance'
+import { Divider } from '@/components/Divider'
 import { LikeIcon } from '@/components/icons/LikeIcon'
-import { Line } from '@/components/Line'
 import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 import type { CommentModel } from '@/models/comment.model'
@@ -66,7 +66,7 @@ const Comment = ({ comment, postOwnerId }: CommentProps) => {
           <div className="ml-2">{comment.likes.length}</div>
         </div>
       </div>
-      <Line />
+      <Divider />
     </>
   )
 }
