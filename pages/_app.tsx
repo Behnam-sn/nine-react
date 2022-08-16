@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { SWRConfig } from 'swr'
 
 import { FetchTheme } from '@/components/FetchTheme'
-import { HeaderBar } from '@/components/Header/Header'
+import { HeaderBar } from '@/components/HeaderBar/HeaderBar'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { fetcher } from '@/utils/fetcher'

@@ -1,5 +1,5 @@
-import { SignButton } from '@/components/Header/SignButton'
-import { ThemeButton } from '@/components/Header/ThemeButton'
+import { SignButton } from '@/components/HeaderBar/SignButton'
+import { ThemeButton } from '@/components/HeaderBar/ThemeButton'
 
 export const HeaderBar = () => {
   return (
