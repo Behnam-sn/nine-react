@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 import { TextInput } from '@/components/Forms/TextInput'
-import { SignIn } from '@/utils/sign'
+import { SignIn } from '@/utils/auth'
 
 export const SignInForm = () => {
   return (
