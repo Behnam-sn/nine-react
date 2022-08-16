@@ -4,6 +4,7 @@ import { LogInIcon } from '@/components/icons/LogInIcon'
 import { LogOutIcon } from '@/components/icons/LogOutIcon'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { SignOut } from '@/utils/auth'
 
 export const SignButton = () => {
   const { isLoading, loggedOut } = useCurrentUser()
@@ -20,8 +21,8 @@ export const SignButton = () => {
     )
 
   return (
-    <div>
-      <LogOutIcon className="mr-0 ml-auto h-9 w-9" />
-    </div>
+    <button className="mr-0 ml-auto block" onClick={SignOut}>
+      <LogOutIcon className=" h-9 w-9" />
+    </button>
   )
 }

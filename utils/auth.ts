@@ -21,4 +21,7 @@ export const SignIn = async (username: string, password: string) => {
 
 export const SignUp = async () => {}
 
-export const SignOut = () => {}
+export const SignOut = () => {
+  document.cookie = 'jwt_token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+  axios.defaults.headers.common['Authorization'] = ''
+}
