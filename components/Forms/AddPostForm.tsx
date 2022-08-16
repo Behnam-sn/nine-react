@@ -22,9 +22,8 @@ export const AddPostForm = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form>
-            <CustomTextarea name="text" placeholder="text" />
-
+          <Form className="px-5 pt-5">
+            <CustomTextarea name="text" placeholder="what's in your mind..." />
             <SubmitButton
               className="ml-auto"
               text="Post"
