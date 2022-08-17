@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import { Author } from '@/components/Author'
 import { AddPostForm } from '@/components/Forms/AddPostForm'
@@ -11,9 +12,14 @@ const Add = () => {
   const router = useRouter()
   const { currentUser, isLoading, loggedOut } = useCurrentUser()
 
-  if (isLoading) return <Spinner />
+  useEffect(() => {
+    if (loggedOut) {
+      router.push('/sign')
+    }
+  }, [loggedOut, router])
 
-  if (loggedOut) router.push('/sign')
+  if (isLoading) return <Spinner />
+  if (loggedOut) return <></>
 
   return (
     <div className="px-5 pt-5">
