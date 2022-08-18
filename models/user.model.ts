@@ -1,4 +1,5 @@
 import type { CommentModel } from '@/models/comment.model'
+import type { FollowModel } from '@/models/follow.model'
 import type { LikeModel } from '@/models/like.model'
 import type { PostModel } from '@/models/post.model'
 
@@ -14,8 +15,8 @@ export interface UserModel {
   posts: PostModel[]
   comments: CommentModel[]
   likes: LikeModel[]
-  followers: []
-  followings: []
+  followers: [FollowModel]
+  followings: [FollowModel]
 }
 
 export interface AuthorModel {

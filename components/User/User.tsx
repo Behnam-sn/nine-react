@@ -1,5 +1,11 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useSWRConfig } from 'swr'
+
 import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
+import { Spinner } from '@/components/Spinner'
+import { useCurrentUser } from '@/hooks/useCurrentUser'
 import type { UserModel } from '@/models/user.model'
 
 interface Props {
@@ -40,7 +46,67 @@ export const User = ({ user }: Props) => {
         </div>
         <div className="mt-1 text-sm text-primary-300">{`@${user.username}`}</div>
         <div>{user.bio}</div>
+        <Follow user={user} />
       </div>
     </div>
+  )
+}
+
+interface FollowProps {
+  user: UserModel
+}
+
+export const Follow = ({ user }: FollowProps) => {
+  const [isFollowing, setIsFollowing] = useState(false)
+  const { currentUser, isLoading, loggedOut } = useCurrentUser()
+  const { mutate } = useSWRConfig()
+
+  useEffect(() => {
+    if (currentUser) {
+      let found = currentUser.followings.find(follow => {
+        return follow.following_id === user.id
+      })
+
+      found ? setIsFollowing(true) : setIsFollowing(false)
+    }
+  }, [currentUser, user.id])
+
+  const handleClick = async () => {
+    if (isFollowing) {
+      await axios
+        .delete(`/follows/${user.id}`)
+        .then(() => {
+          setIsFollowing(false)
+          mutate('/users/current-user')
+          mutate(`/users/${user.username}`)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    } else {
+      await axios
+        .post(`/follows/${user.id}`)
+        .then(() => {
+          setIsFollowing(true)
+          mutate('/users/current-user')
+          mutate(`/users/${user.username}`)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }
+
+  if (isLoading) return <Spinner />
+  if (loggedOut) return <></>
+  if (currentUser.id === user.id) return <></>
+
+  return (
+    <button
+      className="my-3 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
+      onClick={handleClick}
+    >
+      {isFollowing ? 'Unfollow' : 'Follow'}
+    </button>
   )
 }
