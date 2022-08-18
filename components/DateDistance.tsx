@@ -12,6 +12,8 @@ interface Props {
 
 export const DateDistance = ({ date }: Props) => {
   return (
-    <div className="text-xs font-light">{dateTimeDistanceFilter(date)}</div>
+    <div className="text-xs font-light text-primary-800 transition-colors duration-300 dark:text-primary-200">
+      {dateTimeDistanceFilter(date)}
+    </div>
   )
 }
