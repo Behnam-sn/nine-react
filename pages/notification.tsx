@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 
 import { BellIcon } from '@/components/icons/BellIcon'
 
-const Notification: NextPage = ({}) => {
+const Notification: NextPage = () => {
   return (
     <main className="mt-52">
       <BellIcon className="mx-auto h-32 w-32 stroke-1" />

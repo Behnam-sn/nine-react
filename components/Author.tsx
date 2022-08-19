@@ -5,10 +5,10 @@ import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
 import { Spinner } from '@/components/Spinner'
 import { useAuthor } from '@/hooks/useAuthor'
 
-interface Props {
+interface AuthorProps {
   id: number
 }
-export const Author = ({ id }: Props) => {
+export const Author = ({ id }: AuthorProps) => {
   const { author, isLoading } = useAuthor(id)
 
   if (isLoading) return <Spinner className="my-2" />

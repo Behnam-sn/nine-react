@@ -58,9 +58,7 @@ const Profile = () => {
   )
 }
 
-interface PageProps {}
-
-const Page: NextPage<PageProps> = ({}) => {
+const Page: NextPage = () => {
   return (
     <>
       <Head>

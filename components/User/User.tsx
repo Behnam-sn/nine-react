@@ -8,11 +8,11 @@ import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import type { UserModel } from '@/models/user.model'
 
-interface Props {
+interface UserProps {
   user: UserModel
 }
 
-export const User = ({ user }: Props) => {
+export const User = ({ user }: UserProps) => {
   return (
     <div className="px-4">
       <div className="my-2 flex content-center">

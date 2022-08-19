@@ -1,10 +1,10 @@
-interface Props {
+interface SpinnerProps {
   className?: string
 }
 
 export const Spinner = ({
   className = 'my-3 flex w-full justify-center'
-}: Props) => {
+}: SpinnerProps) => {
   return (
     <div className={className} role="status">
       <svg

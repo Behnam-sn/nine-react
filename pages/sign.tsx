@@ -5,9 +5,7 @@ import { useState } from 'react'
 import { SignInForm } from '@/components/Forms/SignInForm'
 import { SignUpForm } from '@/components/Forms/SignUpForm'
 
-interface Props {}
-
-const Page: NextPage<Props> = ({}) => {
+const Page: NextPage = () => {
   const [section, setSection] = useState('Sign In')
 
   return (

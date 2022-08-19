@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import type { AuthorModel } from '@/models/user.model'
 
-interface Props {
+interface useAuthorProps {
   author: AuthorModel
   isLoading: boolean
   error: any
@@ -14,5 +14,5 @@ export const useAuthor = (id: number) => {
   return {
     author: data,
     isLoading: !data || error
-  } as Props
+  } as useAuthorProps
 }

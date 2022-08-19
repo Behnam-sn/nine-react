@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import type { CommentModel } from '@/models/comment.model'
 
-interface Props {
+interface useCommentProps {
   comment: CommentModel
   isLoading: boolean
   error: any
@@ -15,5 +15,5 @@ export const useComment = (id: number) => {
     comment: data,
     isLoading: !data && !error,
     error: error
-  } as Props
+  } as useCommentProps
 }

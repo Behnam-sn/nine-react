@@ -10,11 +10,11 @@ import { useAuthor } from '@/hooks/useAuthor'
 import { usePost } from '@/hooks/usePost'
 import type { CommentModel } from '@/models/comment.model'
 
-interface Props {
+interface CommentProps {
   comment: CommentModel
 }
 
-export const Comment = ({ comment }: Props) => {
+export const Comment = ({ comment }: CommentProps) => {
   return (
     <>
       <div className="relative z-0 mt-4 pb-10 text-primary-900 transition-colors duration-300 dark:text-primary-100">

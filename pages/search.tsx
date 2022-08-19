@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-const Search: NextPage = ({}) => {
+const Search: NextPage = () => {
   return (
     <main>
       <div className="mx-8 pt-4">

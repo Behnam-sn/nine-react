@@ -1,10 +1,14 @@
-interface Props {
+interface SubmitButtonProps {
   text: string
   disabled: boolean
   className?: string
 }
 
-export const SubmitButton = ({ text, disabled, className = '' }: Props) => {
+export const SubmitButton = ({
+  text,
+  disabled,
+  className = ''
+}: SubmitButtonProps) => {
   return (
     <button
       type="submit"

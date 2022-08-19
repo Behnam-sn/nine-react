@@ -1,11 +1,11 @@
 import { Comment } from '@/components/Comment/Comment'
 import type { CommentModel } from '@/models/comment.model'
 
-interface Props {
+interface CommentsProps {
   comments: CommentModel[]
 }
 
-export const Comments = ({ comments }: Props) => {
+export const Comments = ({ comments }: CommentsProps) => {
   if (comments.length > 0) {
     return (
       <div>

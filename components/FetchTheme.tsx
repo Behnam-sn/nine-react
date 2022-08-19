@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 
 import { useTheme } from '@/contexts/ThemeContext'
 
-interface Props {
+interface FetchThemeProps {
   children: React.ReactNode
 }
 
-export const FetchTheme = ({ children }: Props) => {
+export const FetchTheme = ({ children }: FetchThemeProps) => {
   const { setTheme } = useTheme()
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const FetchTheme = ({ children }: Props) => {
     } else {
       setTheme('light')
     }
-  }, [])
+  }, [setTheme])
 
   return <>{children}</>
 }

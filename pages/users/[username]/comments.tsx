@@ -48,9 +48,7 @@ const UserWithComments = ({ username }: UserWithCommentsProps) => {
   )
 }
 
-interface Props {}
-
-const Page: NextPage<Props> = ({}) => {
+const Page: NextPage = () => {
   const router = useRouter()
   const { username } = router.query
 

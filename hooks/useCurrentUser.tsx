@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import { UserModel } from '@/models/user.model'
 
-interface Props {
+interface useCurrentUserProps {
   currentUser: UserModel
   isLoading: boolean
   loggedOut: any
@@ -15,5 +15,5 @@ export const useCurrentUser = () => {
     currentUser: data,
     isLoading: !data && !error,
     loggedOut: error
-  } as Props
+  } as useCurrentUserProps
 }

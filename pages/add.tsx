@@ -29,9 +29,7 @@ const Add = () => {
   )
 }
 
-interface Props {}
-
-const Page: NextPage<Props> = ({}) => {
+const Page: NextPage = () => {
   return (
     <>
       <Head>

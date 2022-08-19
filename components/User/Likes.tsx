@@ -5,11 +5,11 @@ import { useComment } from '@/hooks/useComment'
 import { usePost } from '@/hooks/usePost'
 import type { LikeModel } from '@/models/like.model'
 
-interface Props {
+interface LikesProps {
   likes: LikeModel[]
 }
 
-export const Likes = ({ likes }: Props) => {
+export const Likes = ({ likes }: LikesProps) => {
   if (likes.length > 0) {
     return (
       <div>

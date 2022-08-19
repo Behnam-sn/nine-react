@@ -1,11 +1,11 @@
 import { Post } from '@/components/Post/Post'
 import type { PostModel } from '@/models/post.model'
 
-interface Props {
+interface PostsProps {
   posts: PostModel[]
 }
 
-export const Posts = ({ posts }: Props) => {
+export const Posts = ({ posts }: PostsProps) => {
   if (posts.length > 0) {
     return (
       <div>

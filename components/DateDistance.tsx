@@ -6,11 +6,11 @@ const dateTimeDistanceFilter = (dateValue: string): string => {
   })
 }
 
-interface Props {
+interface DateDistanceProps {
   date: string
 }
 
-export const DateDistance = ({ date }: Props) => {
+export const DateDistance = ({ date }: DateDistanceProps) => {
   return (
     <div className="text-xs font-light text-primary-800 transition-colors duration-300 dark:text-primary-200">
       {dateTimeDistanceFilter(date)}

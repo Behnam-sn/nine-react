@@ -7,11 +7,11 @@ import { CommentIcon } from '@/components/icons/CommentIcon'
 import { LikeIcon } from '@/components/icons/LikeIcon'
 import type { PostModel } from '@/models/post.model'
 
-interface Props {
+interface PostProps {
   post: PostModel
 }
 
-export const Post = ({ post }: Props) => {
+export const Post = ({ post }: PostProps) => {
   return (
     <>
       <article className="relative z-0 mt-4 pb-10">

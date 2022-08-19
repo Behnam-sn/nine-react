@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import type { PostModel } from '@/models/post.model'
 
-interface Props {
+interface usePostsProps {
   posts: PostModel[]
   isLoading: boolean
   error: any
@@ -15,5 +15,5 @@ export const usePosts = () => {
     posts: data,
     isLoading: !data || error,
     error: error
-  } as Props
+  } as usePostsProps
 }

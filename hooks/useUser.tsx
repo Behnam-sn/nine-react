@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import { UserModel } from '@/models/user.model'
 
-interface Props {
+interface useUserProps {
   user: UserModel
   isLoading: boolean
   error: any
@@ -15,5 +15,5 @@ export const useUser = (username: string) => {
     user: data,
     isLoading: !data && !error,
     error: error
-  } as Props
+  } as useUserProps
 }
