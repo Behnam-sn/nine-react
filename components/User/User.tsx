@@ -37,7 +37,7 @@ export const User = ({ user }: Props) => {
         </div>
       </div>
 
-      <div className="my-2">
+      <div className="mt-2">
         <div className="flex items-baseline">
           <div className="mr-1 text-3xl font-semibold">{user.name}</div>
           {user.is_superuser && (
@@ -46,8 +46,9 @@ export const User = ({ user }: Props) => {
         </div>
         <div className="mt-1 text-sm text-primary-300">{`@${user.username}`}</div>
         <div>{user.bio}</div>
-        <Follow user={user} />
       </div>
+
+      <Follow user={user} />
     </div>
   )
 }
@@ -101,7 +102,7 @@ const Follow = ({ user }: FollowProps) => {
 
   return (
     <button
-      className="my-3 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
+      className="my-4 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
       onClick={handleClick}
     >
       {isFollowing ? 'Unfollow' : 'Follow'}
