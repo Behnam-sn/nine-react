@@ -62,7 +62,6 @@ const Follow = ({ like }: FollowProps) => {
       await axios
         .delete(`/follows/${like.owner_id}`)
         .then(() => {
-          setIsFollowing(false)
           mutate('/users/current-user')
         })
         .catch(error => {
@@ -72,7 +71,6 @@ const Follow = ({ like }: FollowProps) => {
       await axios
         .post(`/follows/${like.owner_id}`)
         .then(() => {
-          setIsFollowing(true)
           mutate('/users/current-user')
         })
         .catch(error => {

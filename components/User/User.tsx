@@ -76,7 +76,6 @@ const Follow = ({ user }: FollowProps) => {
       await axios
         .delete(`/follows/${user.id}`)
         .then(() => {
-          setIsFollowing(false)
           mutate('/users/current-user')
           mutate(`/users/${user.username}`)
         })
@@ -87,7 +86,6 @@ const Follow = ({ user }: FollowProps) => {
       await axios
         .post(`/follows/${user.id}`)
         .then(() => {
-          setIsFollowing(true)
           mutate('/users/current-user')
           mutate(`/users/${user.username}`)
         })
