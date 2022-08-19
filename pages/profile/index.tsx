@@ -27,6 +27,12 @@ const Profile = () => {
     <>
       <User user={currentUser} />
 
+      <div className="px-4">
+        <button className="my-3 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900">
+          Settings
+        </button>
+      </div>
+
       <Divider />
       <div className="flex">
         <Link href={`/profile`}>
