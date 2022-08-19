@@ -42,7 +42,7 @@ interface FollowProps {
   like: PostLike
 }
 
-export const Follow = ({ like }: FollowProps) => {
+const Follow = ({ like }: FollowProps) => {
   const [isFollowing, setIsFollowing] = useState(false)
   const { currentUser, isLoading, loggedOut } = useCurrentUser()
   const { mutate } = useSWRConfig()

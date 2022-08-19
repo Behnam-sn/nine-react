@@ -56,7 +56,7 @@ interface FollowProps {
   user: UserModel
 }
 
-export const Follow = ({ user }: FollowProps) => {
+const Follow = ({ user }: FollowProps) => {
   const [isFollowing, setIsFollowing] = useState(false)
   const { currentUser, isLoading, loggedOut } = useCurrentUser()
   const { mutate } = useSWRConfig()
