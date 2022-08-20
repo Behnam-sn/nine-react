@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 import { Divider } from '@/components/Divider'
 import { Comments } from '@/components/Post/Comments'
+import { CreateComment } from '@/components/Post/CreateComment'
 import { Post } from '@/components/Post/Post'
 import { Spinner } from '@/components/Spinner'
 import { usePost } from '@/hooks/usePost'
@@ -36,6 +37,8 @@ export const PostWithComments = ({ id }: PostWithCommentsProps) => {
         </Link>
       </div>
       <Divider />
+
+      <CreateComment post_id={post.id} />
 
       <Comments comments={post.comments} postOwnerId={post.owner_id} />
     </>
