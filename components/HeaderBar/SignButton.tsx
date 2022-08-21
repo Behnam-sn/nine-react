@@ -5,7 +5,7 @@ import { LogInIcon } from '@/components/icons/LogInIcon'
 import { LogOutIcon } from '@/components/icons/LogOutIcon'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
-import { SignOut } from '@/utils/auth'
+import { signOut } from '@/utils/auth'
 
 export const SignButton = () => {
   const { isLoading, loggedOut } = useCurrentUser()
@@ -26,7 +26,7 @@ export const SignButton = () => {
     <button
       className="mr-0 ml-auto block"
       onClick={() => {
-        SignOut()
+        signOut()
         mutate('/users/current-user')
       }}
     >

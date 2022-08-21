@@ -25,9 +25,3 @@ export interface AuthorModel {
   name: string
   is_superuser: boolean
 }
-
-export interface UserCreateModel {
-  username: string
-  name: string
-  password: string
-}

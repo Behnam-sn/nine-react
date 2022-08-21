@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
@@ -5,7 +6,7 @@ import * as Yup from 'yup'
 
 import { CustomInput } from '@/components/Forms/CustomInput'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
-import { SignUp } from '@/utils/auth'
+import { setToken } from '@/utils/auth'
 
 export const SignUpForm = () => {
   const router = useRouter()
@@ -28,9 +29,16 @@ export const SignUpForm = () => {
           password: Yup.string().required('Required')
         })}
         onSubmit={async values => {
-          await SignUp(values)
-          mutate('/users/current-user')
-          router.push('/')
+          await axios
+            .post('/auth/signup', values)
+            .then(async response => {
+              setToken(response.data.access_token)
+              await mutate('/users/current-user')
+              router.back()
+            })
+            .catch(error => {
+              console.log(error)
+            })
         }}
       >
         {({ isSubmitting }) => (
