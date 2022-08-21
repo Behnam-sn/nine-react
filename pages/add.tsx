@@ -16,7 +16,7 @@ const Add = () => {
     if (loggedOut) {
       router.push('/sign')
     }
-  }, [])
+  }, [loggedOut, router])
 
   if (isLoading) return <Spinner />
   if (loggedOut) return <></>
