@@ -58,6 +58,7 @@ interface FollowProps {
 }
 
 const Follow = ({ user }: FollowProps) => {
+  const [isDisabled, setIsDisabled] = useState(false)
   const [isFollowing, setIsFollowing] = useState(false)
   const { currentUser, isLoading, loggedOut } = useCurrentUser()
   const { mutate } = useSWRConfig()
@@ -73,10 +74,13 @@ const Follow = ({ user }: FollowProps) => {
   }, [currentUser, user.id])
 
   const handleClick = async () => {
+    setIsDisabled(true)
+
     if (isFollowing) {
       await axios
         .delete(`/follows/${user.id}`)
         .then(() => {
+          setIsDisabled(false)
           mutate('/users/current-user')
           mutate(`/users/${user.username}`)
         })
@@ -87,6 +91,7 @@ const Follow = ({ user }: FollowProps) => {
       await axios
         .post(`/follows/${user.id}`)
         .then(() => {
+          setIsDisabled(false)
           mutate('/users/current-user')
           mutate(`/users/${user.username}`)
         })
@@ -104,6 +109,7 @@ const Follow = ({ user }: FollowProps) => {
     <button
       className="my-4 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
       onClick={handleClick}
+      disabled={isDisabled}
     >
       {isFollowing ? 'Unfollow' : 'Follow'}
     </button>
