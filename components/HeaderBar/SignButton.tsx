@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useSWRConfig } from 'swr'
 
-import { LogOutIcon } from '@/components/icons/LogOutIcon'
 import { SignInOutline } from '@/components/icons/SignInOutline'
+import { SignOutIconOutline } from '@/components/icons/SignOutIconOutline'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { signOut } from '@/utils/auth'
@@ -30,7 +30,7 @@ export const SignButton = () => {
         mutate('/users/current-user')
       }}
     >
-      <LogOutIcon className=" h-9 w-9" />
+      <SignOutIconOutline className=" h-9 w-9" />
     </button>
   )
 }
