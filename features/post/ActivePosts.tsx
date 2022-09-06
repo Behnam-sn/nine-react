@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
 
-import { Post } from '@/features/post/post'
+import { Post } from '@/features/post/Post'
 import { useActivePostsCount } from '@/hooks/useActivePostsCount'
 import { useActivePostsIds } from '@/hooks/useActivePostsIds'
 import { useObserver } from '@/hooks/useObserver'
