@@ -3,8 +3,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import { Author } from '@/components/Author'
 import { AddPostForm } from '@/components/Forms/AddPostForm'
+import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 
@@ -23,7 +23,7 @@ const Add = () => {
 
   return (
     <div className="px-5 pt-5">
-      <Author id={currentUser.id} />
+      <Owner owner={currentUser} />
       <AddPostForm />
     </div>
   )

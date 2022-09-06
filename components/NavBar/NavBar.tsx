@@ -10,7 +10,7 @@ import { UserIcon } from '@/components/icons/UserIcon'
 import { NavBarItem } from '@/components/NavBar/NavBarItem'
 
 const activeLink = (url: string, pathname: string) => {
-  return pathname === url ? 'stroke-2' : ''
+  return pathname === url ? 'stroke-[2.5]' : ''
 }
 
 export const NavBar = () => {
@@ -44,9 +44,6 @@ export const NavBar = () => {
         ) : (
           <BellIconOutline className="h-9 w-9" />
         )}
-        {/* <BellIcon
-          className={`h-9 w-9 ${activeLink('/notification', router.pathname)}`}
-        /> */}
       </NavBarItem>
 
       <NavBarItem href="/profile">
