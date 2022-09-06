@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 
-import { BellIcon } from '@/components/icons/BellIcon'
+import { BellIconOutline } from '@/components/icons/BellIconOutline'
+import { BellIconSolid } from '@/components/icons/BellIconSolid'
 import { HomeIconOutLine } from '@/components/icons/HomeIconOutLine'
 import { HomeIconSolid } from '@/components/icons/HomeIconSolid'
 import { PlusIcon } from '@/components/icons/PlusIcon'
@@ -23,9 +24,6 @@ export const NavBar = () => {
         ) : (
           <HomeIconOutLine className="h-9 w-9" />
         )}
-        {/* <HomeIconOutLine
-          className={`h-9 w-9 ${activeLink('/', router.pathname)}`}
-        /> */}
       </NavBarItem>
 
       <NavBarItem href="/search">
@@ -41,9 +39,14 @@ export const NavBar = () => {
       </NavBarItem>
 
       <NavBarItem href="/notification">
-        <BellIcon
+        {router.pathname == '/notification' ? (
+          <BellIconSolid className="h-9 w-9" />
+        ) : (
+          <BellIconOutline className="h-9 w-9" />
+        )}
+        {/* <BellIcon
           className={`h-9 w-9 ${activeLink('/notification', router.pathname)}`}
-        />
+        /> */}
       </NavBarItem>
 
       <NavBarItem href="/profile">
