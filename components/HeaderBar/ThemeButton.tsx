@@ -1,5 +1,5 @@
-import { MoonIcon } from '@/components/icons/MoonIcon'
-import { SunIcon } from '@/components/icons/SunIcon'
+import { MoonIconOutline } from '@/components/icons/MoonIconOutline'
+import { SunIconOutline } from '@/components/icons/SunIconOutline'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export const ThemeButton = () => {
@@ -20,9 +20,9 @@ export const ThemeButton = () => {
   return (
     <button className="flex items-center" onClick={ToggleTheme}>
       {theme === 'light' ? (
-        <MoonIcon className="h-9 w-9" />
+        <MoonIconOutline className="h-9 w-9" />
       ) : (
-        <SunIcon className="h-9 w-9" />
+        <SunIconOutline className="h-9 w-9" />
       )}
     </button>
   )
