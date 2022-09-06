@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useSWRConfig } from 'swr'
 
-import { LogInIcon } from '@/components/icons/LogInIcon'
 import { LogOutIcon } from '@/components/icons/LogOutIcon'
+import { SignInOutline } from '@/components/icons/SignInOutline'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { signOut } from '@/utils/auth'
@@ -17,7 +17,7 @@ export const SignButton = () => {
     return (
       <Link href="/sign">
         <a>
-          <LogInIcon className="mr-0 ml-auto h-9 w-9" />
+          <SignInOutline className="mr-0 ml-auto h-9 w-9" />
         </a>
       </Link>
     )
