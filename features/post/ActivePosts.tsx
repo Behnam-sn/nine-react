@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
 
-import { Spinner } from '@/components/Spinner'
+import { Post } from '@/features/post/post'
 import { useActivePostsCount } from '@/hooks/useActivePostsCount'
 import { useActivePostsIds } from '@/hooks/useActivePostsIds'
 import { useObserver } from '@/hooks/useObserver'
@@ -13,7 +13,7 @@ export const ActivePosts = () => {
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count, isLoading } = useActivePostsCount()
+  const { count } = useActivePostsCount()
   const { ids } = useActivePostsIds(skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
@@ -51,12 +51,10 @@ export const ActivePosts = () => {
     }
   }, [ids])
 
-  if (isLoading) return <Spinner />
-
   return (
     <div>
       {items.map(item => (
-        <div key={item.id}>{item.id}</div>
+        <Post key={item.id} id={item.id} />
       ))}
       <div ref={ref}></div>
     </div>
