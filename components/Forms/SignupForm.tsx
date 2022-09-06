@@ -33,7 +33,7 @@ export const SignUpForm = () => {
             .post('/auth/signup', values)
             .then(async response => {
               setToken(response.data.access_token)
-              await mutate('/users/current-user')
+              await mutate('/users/current-user/')
               router.back()
             })
             .catch(error => {

@@ -2,7 +2,7 @@ interface Props {
   className: string
 }
 
-export const SignInOutline = ({ className }: Props) => {
+export const SignInIconOutline = ({ className }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

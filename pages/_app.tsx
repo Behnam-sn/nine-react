@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     axios.defaults.headers.common['Authorization'] =
       'Bearer ' + getCookie(document.cookie, 'token')
-    mutate('/users/current-user')
+    mutate('/users/current-user/')
   }, [])
 
   return (

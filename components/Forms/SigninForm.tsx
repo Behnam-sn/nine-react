@@ -32,7 +32,7 @@ export const SignInForm = () => {
             .post('/auth/signin', User)
             .then(async response => {
               setToken(response.data.access_token)
-              await mutate('/users/current-user')
+              await mutate('/users/current-user/')
               router.back()
             })
             .catch(error => {
