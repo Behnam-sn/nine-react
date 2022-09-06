@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { DateDistance } from '@/components/DateDistance'
 import { Divider } from '@/components/Divider'
 import { CommentIcon } from '@/components/icons/CommentIcon'
-import { OutlineHeartIcon } from '@/components/icons/OutlineHeartIcon'
+import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
 import { Owner } from '@/components/Owner'
 import { useActivePost } from '@/hooks/useActivePost'
 
@@ -47,7 +47,7 @@ export const Post = ({ id }: postProps) => {
           <div className="ml-2">{post.comments}</div>
 
           <button className="ml-4">
-            <OutlineHeartIcon className="h-6 w-6 stroke-2" />
+            <HeartIconOutline className="h-6 w-6" />
           </button>
 
           <div className="ml-2">{post.likes}</div>
