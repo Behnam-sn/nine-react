@@ -1,26 +1,22 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { Post } from '@/components/Post/Post'
-import { Spinner } from '@/components/Spinner'
-import { usePosts } from '@/hooks/usePosts'
+import { ActivePosts } from '@/components/Post/ActivePosts'
 
 const Home = () => {
-  const { posts, isLoading } = usePosts()
+  return <ActivePosts />
 
-  if (isLoading) return <Spinner />
-
-  if (posts.length > 0) {
-    return (
-      <div>
-        {posts.map(post => (
-          <Post key={post.id} post={post} />
-        ))}
-      </div>
-    )
-  } else {
-    return <div className="mt-8 text-center text-lg">No posts yet</div>
-  }
+  // if (posts.length > 0) {
+  //   return (
+  //     <div>
+  //       {posts.map(post => (
+  //         <Post key={post.id} post={post} />
+  //       ))}
+  //     </div>
+  //   )
+  // } else {
+  //   return <div className="mt-8 text-center text-lg">No posts yet</div>
+  // }
 }
 
 const Page: NextPage = () => {
