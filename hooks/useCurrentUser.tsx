@@ -9,7 +9,7 @@ interface useCurrentUserProps {
 }
 
 export const useCurrentUser = () => {
-  const { data, error } = useSWR('/users/current-user')
+  const { data, error } = useSWR('users/current-user/')
 
   return {
     currentUser: data,
