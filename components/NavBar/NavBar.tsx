@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
 
 import { BellIcon } from '@/components/icons/BellIcon'
-import { HomeIcon } from '@/components/icons/HomeIcon'
+import { HomeIconOutLine } from '@/components/icons/HomeIconOutLine'
+import { HomeIconSolid } from '@/components/icons/HomeIconSolid'
 import { PlusIcon } from '@/components/icons/PlusIcon'
 import { SearchIcon } from '@/components/icons/SearchIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
@@ -17,7 +18,14 @@ export const NavBar = () => {
   return (
     <div className="fixed bottom-0 z-20 flex w-full justify-between bg-primary-100 p-3 transition-colors duration-300 dark:bg-primary-900 lg:hidden">
       <NavBarItem href="/">
-        <HomeIcon className={`h-9 w-9 ${activeLink('/', router.pathname)}`} />
+        {'/' == router.pathname ? (
+          <HomeIconSolid className="h-9 w-9" />
+        ) : (
+          <HomeIconOutLine className="h-9 w-9" />
+        )}
+        {/* <HomeIconOutLine
+          className={`h-9 w-9 ${activeLink('/', router.pathname)}`}
+        /> */}
       </NavBarItem>
 
       <NavBarItem href="/search">
