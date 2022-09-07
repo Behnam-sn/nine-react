@@ -6,10 +6,10 @@ import * as Yup from 'yup'
 import { SubmitButton } from '@/components/Forms/SubmitButton'
 
 interface CreateCommentFormProps {
-  post_id: number
+  postId: number
 }
 
-export const CreateCommentForm = ({ post_id }: CreateCommentFormProps) => {
+export const CreateCommentForm = ({ postId }: CreateCommentFormProps) => {
   const { mutate } = useSWRConfig()
 
   return (
@@ -27,11 +27,11 @@ export const CreateCommentForm = ({ post_id }: CreateCommentFormProps) => {
           await axios
             .post('/comments/', {
               text: values.text,
-              post_id: post_id
+              post_id: postId
             })
             .then(() => {
               resetForm()
-              mutate(`/posts/${post_id}`)
+              mutate(`/posts/${postId}`)
             })
             .catch(error => {
               console.log(error)

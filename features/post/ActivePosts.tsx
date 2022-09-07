@@ -54,7 +54,7 @@ export const ActivePosts = () => {
   return (
     <div>
       {items.map(item => (
-        <Post key={item.id} id={item.id} />
+        <Post key={item.id} postId={item.id} />
       ))}
       <div ref={ref}></div>
     </div>

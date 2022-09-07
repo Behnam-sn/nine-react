@@ -8,11 +8,11 @@ import { Owner } from '@/components/Owner'
 import { useActivePost } from '@/hooks/useActivePost'
 
 interface postProps {
-  id: number
+  postId: number
 }
 
-export const Post = ({ id }: postProps) => {
-  const { post, isLoading, error } = useActivePost(id)
+export const Post = ({ postId }: postProps) => {
+  const { post, isLoading, error } = useActivePost(postId)
 
   if (isLoading) return <></>
   if (error) return <></>
