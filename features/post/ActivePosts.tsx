@@ -6,6 +6,7 @@ import { useActivePostsCount } from '@/hooks/useActivePostsCount'
 import { useActivePostsIds } from '@/hooks/useActivePostsIds'
 import { useObserver } from '@/hooks/useObserver'
 import type { IdModel } from '@/models/id.model'
+import { uniqueItems } from '@/utils/infiniteLoading'
 
 export const ActivePosts = () => {
   const [initialCount, setInitialCount] = useState(0)
@@ -46,7 +47,10 @@ export const ActivePosts = () => {
 
   useEffect(() => {
     if (ids) {
-      setItems(prevItems => [...prevItems, ...ids.slice(0).reverse()])
+      setItems(pervItems =>
+        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
+      )
+
       if (limit === 0) setLimit(5)
     }
   }, [ids])
