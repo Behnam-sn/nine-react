@@ -6,7 +6,8 @@ import { HomeIconOutLine } from '@/components/icons/HomeIconOutLine'
 import { HomeIconSolid } from '@/components/icons/HomeIconSolid'
 import { PlusIcon } from '@/components/icons/PlusIcon'
 import { SearchIcon } from '@/components/icons/SearchIcon'
-import { UserIcon } from '@/components/icons/UserIcon'
+import { UserIconOutline } from '@/components/icons/UserIconOutline'
+import { UserIconSolid } from '@/components/icons/UserIconSolid'
 import { NavBarItem } from '@/components/NavBar/NavBarItem'
 
 const activeLink = (url: string, pathname: string) => {
@@ -47,9 +48,11 @@ export const NavBar = () => {
       </NavBarItem>
 
       <NavBarItem href="/profile">
-        <UserIcon
-          className={`h-9 w-9 ${activeLink('/profile', router.pathname)}`}
-        />
+        {router.pathname.includes('/profile') ? (
+          <UserIconSolid className="h-9 w-9" />
+        ) : (
+          <UserIconOutline className="h-9 w-9" />
+        )}
       </NavBarItem>
     </div>
   )
