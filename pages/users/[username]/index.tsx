@@ -3,17 +3,17 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { Spinner } from '@/components/Spinner'
-import { NavSection } from '@/components/User/NavSection'
-import { Posts } from '@/components/User/Posts'
-import { User } from '@/components/User/User'
-import { useUser } from '@/hooks/useUser'
+import { NavigationSection } from '@/features/user/NavigationSection'
+import { User } from '@/features/user/User'
+import { UserPosts } from '@/features/user/UserPosts'
+import { useActiveUser } from '@/hooks/useActiveUser'
 
 interface UserWithPostsProps {
   username: any
 }
 
 const UserWithPosts = ({ username }: UserWithPostsProps) => {
-  const { user, isLoading, error } = useUser(username)
+  const { user, isLoading, error } = useActiveUser(username)
 
   if (isLoading) return <Spinner />
   if (error) return <div>user not found</div>
@@ -21,8 +21,8 @@ const UserWithPosts = ({ username }: UserWithPostsProps) => {
   return (
     <>
       <User user={user} />
-      <NavSection section="posts" username={user.username} />
-      <Posts posts={user.posts} />
+      <NavigationSection username={username} section="posts" />
+      <UserPosts userId={user.id} />
     </>
   )
 }
@@ -35,7 +35,6 @@ const Page: NextPage = () => {
     <>
       <Head>
         <title>{`Nine - ${username} page`}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
