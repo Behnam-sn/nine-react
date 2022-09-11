@@ -3,17 +3,17 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { Spinner } from '@/components/Spinner'
-import { Likes } from '@/components/User/Likes'
-import { NavSection } from '@/components/User/NavSection'
-import { User } from '@/components/User/User'
-import { useUser } from '@/hooks/useUser'
+import { NavigationSection } from '@/features/user/NavigationSection'
+import { User } from '@/features/user/User'
+import { UserLikes } from '@/features/user/UserLikes'
+import { useActiveUser } from '@/hooks/useActiveUser'
 
 interface UserWithLikesProps {
   username: any
 }
 
 const UserWithLikes = ({ username }: UserWithLikesProps) => {
-  const { user, isLoading, error } = useUser(username)
+  const { user, isLoading, error } = useActiveUser(username)
 
   if (isLoading) return <Spinner />
   if (error) return <div>user not found</div>
@@ -21,8 +21,8 @@ const UserWithLikes = ({ username }: UserWithLikesProps) => {
   return (
     <>
       <User user={user} />
-      <NavSection section="likes" username={user.username} />
-      <Likes likes={user.likes} />
+      <NavigationSection username={username} section="likes" />
+      <UserLikes userId={user.id} />
     </>
   )
 }
