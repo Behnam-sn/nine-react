@@ -3,10 +3,10 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import { NavSection } from '@/components/Profile/NavSection'
+import { NavigationSection } from '@/components/profile/NavigationSection'
 import { Spinner } from '@/components/Spinner'
-import { Posts } from '@/components/User/Posts'
-import { User } from '@/components/User/User'
+import { User } from '@/features/user/User'
+import { UserPosts } from '@/features/user/UserPosts'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 
 const Profile = () => {
@@ -32,9 +32,8 @@ const Profile = () => {
         </button>
       </div>
 
-      <NavSection section="posts" />
-
-      <Posts posts={currentUser.posts} />
+      <NavigationSection section="posts" />
+      <UserPosts userId={currentUser.id} />
     </>
   )
 }

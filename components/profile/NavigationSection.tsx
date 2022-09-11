@@ -2,11 +2,11 @@ import Link from 'next/link'
 
 import { Divider } from '@/components/Divider'
 
-interface NavSectionProps {
+interface NavigationSectionProps {
   section: string
 }
 
-export const NavSection = ({ section }: NavSectionProps) => {
+export const NavigationSection = ({ section }: NavigationSectionProps) => {
   return (
     <>
       <Divider />
