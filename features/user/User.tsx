@@ -1,5 +1,5 @@
 import { BadgeIcon } from '@/components/icons/BadgeIcon'
-import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
+import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { UserModel } from '@/models/user.model'
 
 interface UserProps {
@@ -12,7 +12,7 @@ export const User = ({ user }: UserProps) => {
       <div className="my-2 flex content-center">
         <div className="mr-4">
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
-            <UserCircleIcon className="h-20 w-20 text-primary-100 transition-colors duration-300 dark:text-primary-900" />
+            <UserCircleIconOutline className="h-20 w-20 text-primary-100 transition-colors duration-300 dark:text-primary-900" />
           </div>
         </div>
         <div className="flex w-full justify-around">

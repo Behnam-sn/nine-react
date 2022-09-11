@@ -2,7 +2,7 @@ interface Props {
   className: string
 }
 
-export const UserCircleIcon = ({ className }: Props) => {
+export const UserCircleIconOutline = ({ className }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

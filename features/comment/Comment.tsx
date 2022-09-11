@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { DateDistance } from '@/components/DateDistance'
 import { Divider } from '@/components/Divider'
 import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
-import { UserCircleIcon } from '@/components/icons/UserCircleIcon'
+import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useActiveComment } from '@/hooks/useActiveComment'
@@ -81,7 +81,7 @@ const PostOwner = ({ owner }: PostOwnerProp) => {
     <Link href={`/users/${owner.username}`}>
       <a className="flex items-center">
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
-          <UserCircleIcon className="h-6 w-6 text-primary-100 transition-colors duration-300 dark:text-primary-900" />
+          <UserCircleIconOutline className="h-6 w-6 text-primary-100 transition-colors duration-300 dark:text-primary-900" />
         </div>
         <div className="ml-2 mr-1">{owner.name}</div>
         <div className="text-xs text-primary-300">{`@${owner.username}`}</div>
