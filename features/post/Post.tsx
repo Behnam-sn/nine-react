@@ -69,82 +69,42 @@ interface LikeButtonProps {
 }
 
 const LikeButton = ({ post, postId }: LikeButtonProps) => {
-  const { isLiked } = useIsPostLiked(postId)
+  const { isLiked, mutateIsPostLiked } = useIsPostLiked(postId)
   const { loggedOut } = useCurrentUser()
   const router = useRouter()
   const { mutate } = useSWRConfig()
 
   const likePost = async () => {
     await axios.post(`/likes/post/${postId}`)
-
-    let updatedPost = { ...post, likes: post.likes + 1 }
-    mutate(`/active-posts/${postId}`, async () => updatedPost, {
-      optimisticData: updatedPost,
-      rollbackOnError: true
-    })
-
-    return true
+    return { ...post, likes: post.likes + 1 }
   }
 
   const unlikePost = async () => {
     await axios.delete(`/likes/post/${postId}`)
-
-    let updatedPost = { ...post, likes: post.likes - 1 }
-    mutate(`/active-posts/${postId}`, async () => updatedPost, {
-      optimisticData: updatedPost,
-      rollbackOnError: true
-    })
-
-    return false
+    return { ...post, likes: post.likes - 1 }
   }
 
   const handleClick = async () => {
     if (loggedOut) {
       router.push('/sign')
     } else {
-      if (isLiked) {
-        await mutate(`/likes/is-post-liked/${postId}`, unlikePost(), {
-          optimisticData: false,
+      if (!isLiked) {
+        let updatedPost = { ...post, likes: post.likes + 1 }
+        mutate(`/active-posts/${postId}`, likePost(), {
+          optimisticData: updatedPost,
           rollbackOnError: true
         })
-
-        // let updatedPost = { ...post, likes: post.likes - 1 }
-        // await mutate(`/active-posts/${postId}`, async () => updatedPost, {
-        //   optimisticData: updatedPost,
-        //   rollbackOnError: true
-        // })
+        mutateIsPostLiked(true, false)
       } else {
-        await mutate(`/likes/is-post-liked/${postId}`, likePost(), {
-          optimisticData: true,
+        let updatedPost = { ...post, likes: post.likes - 1 }
+        mutate(`/active-posts/${postId}`, unlikePost(), {
+          optimisticData: updatedPost,
           rollbackOnError: true
         })
-
-        // let updatedPost = { ...post, likes: post.likes + 1 }
-        // await mutate(`/active-posts/${postId}`, async () => updatedPost, {
-        //   optimisticData: updatedPost,
-        //   rollbackOnError: true
-        // })
+        mutateIsPostLiked(false, false)
       }
     }
   }
-
-  // const handleClick = async () => {
-  //   if (loggedOut) {
-  //     router.push('/sign')
-  //   } else {
-  //     if (isLiked) {
-  //       await axios.delete(`/likes/post/${postId}`).then(() => {
-  //         mutate(`/likes/is-post-liked/${postId}`)
-  //         mutate(`/active-posts/${postId}`)
-  //       })
-  //     } else {
-  //       await axios.post(`/likes/post/${postId}`).then(() => {
-  //         mutate(`/likes/is-post-liked/${postId}`)
-  //         mutate(`/active-posts/${postId}`)
-  //       })
-  //     }
-  //   }
-  // }
 
   return (
     <button
