@@ -17,7 +17,7 @@ import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useIsCommentLiked } from '@/hooks/useIsCommentLiked'
 import { useObserver } from '@/hooks/useObserver'
 import { CommentModel } from '@/models/comment.model'
-import type { IdModel } from '@/models/id.model'
+import { IdModel } from '@/models/id.model'
 import { uniqueItems } from '@/utils/infiniteLoading'
 
 interface PostCommentsProps {
