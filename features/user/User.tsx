@@ -62,31 +62,29 @@ const FollowButton = ({ user }: FollowButtonProps) => {
   const { currentUser, isLoading, loggedOut } = useCurrentUser()
   const { mutate } = useSWRConfig()
 
-  const unfollow = async () => {
-    await axios.delete(`/follows/${user.id}`)
-    return { ...user, followers: user.followers - 1 }
-  }
-
   const follow = async () => {
     await axios.post(`/follows/${user.id}`)
     return { ...user, followers: user.followers + 1 }
   }
 
+  const unfollow = async () => {
+    await axios.delete(`/follows/${user.id}`)
+    return { ...user, followers: user.followers - 1 }
+  }
+
   const handleClick = async () => {
-    if (isFollowing) {
-      let updatedUser = { ...user, followers: user.followers - 1 }
-      mutate(`/active-users/${user.username}`, unfollow, {
-        optimisticData: updatedUser,
-        rollbackOnError: true
-      })
-      mutateIsFollowing(false, false)
-    } else {
-      let updatedUser = { ...user, followers: user.followers + 1 }
+    if (!isFollowing) {
       mutate(`/active-users/${user.username}`, follow(), {
-        optimisticData: updatedUser,
+        optimisticData: { ...user, followers: user.followers + 1 },
         rollbackOnError: true
       })
       mutateIsFollowing(true, false)
+    } else {
+      mutate(`/active-users/${user.username}`, unfollow, {
+        optimisticData: { ...user, followers: user.followers - 1 },
+        rollbackOnError: true
+      })
+      mutateIsFollowing(false, false)
     }
   }
 
