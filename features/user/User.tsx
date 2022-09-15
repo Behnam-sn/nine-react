@@ -1,5 +1,11 @@
+import axios from 'axios'
+import { useSWRConfig } from 'swr'
+
 import { BadgeIcon } from '@/components/icons/BadgeIcon'
 import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
+import { Spinner } from '@/components/Spinner'
+import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { useIsFollowing } from '@/hooks/useIsFollowing'
 import { UserModel } from '@/models/user.model'
 
 interface UserProps {
@@ -8,7 +14,7 @@ interface UserProps {
 
 export const User = ({ user }: UserProps) => {
   return (
-    <div className="px-4">
+    <div className="mb-4 px-4">
       <div className="my-2 flex content-center">
         <div className="mr-4">
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
@@ -42,70 +48,59 @@ export const User = ({ user }: UserProps) => {
         <div>{user.bio}</div>
       </div>
 
-      {/* <Follow user={user} /> */}
+      <FollowButton user={user} />
     </div>
   )
 }
 
-// interface FollowProps {
-//     user: UserModel
-//   }
+interface FollowButtonProps {
+  user: UserModel
+}
 
-//   const Follow = ({ user }: FollowProps) => {
-//     const [isDisabled, setIsDisabled] = useState(false)
-//     const [isFollowing, setIsFollowing] = useState(false)
-//     const { currentUser, isLoading, loggedOut } = useCurrentUser()
-//     const { mutate } = useSWRConfig()
+const FollowButton = ({ user }: FollowButtonProps) => {
+  const { isFollowing, mutateIsFollowing } = useIsFollowing(user.id)
+  const { currentUser, isLoading, loggedOut } = useCurrentUser()
+  const { mutate } = useSWRConfig()
 
-//     useEffect(() => {
-//       if (currentUser) {
-//         let found = currentUser.followings.find(follow => {
-//           return follow.following_id === user.id
-//         })
+  const unfollow = async () => {
+    await axios.delete(`/follows/${user.id}`)
+    return { ...user, followers: user.followers - 1 }
+  }
 
-//         found ? setIsFollowing(true) : setIsFollowing(false)
-//       }
-//     }, [currentUser, user.id])
+  const follow = async () => {
+    await axios.post(`/follows/${user.id}`)
+    return { ...user, followers: user.followers + 1 }
+  }
 
-//     const handleClick = async () => {
-//       setIsDisabled(true)
+  const handleClick = async () => {
+    if (isFollowing) {
+      let updatedUser = { ...user, followers: user.followers - 1 }
+      mutate(`/active-users/${user.username}`, unfollow, {
+        optimisticData: updatedUser,
+        rollbackOnError: true
+      })
+      mutateIsFollowing(false, false)
+    } else {
+      let updatedUser = { ...user, followers: user.followers + 1 }
+      mutate(`/active-users/${user.username}`, follow(), {
+        optimisticData: updatedUser,
+        rollbackOnError: true
+      })
+      mutateIsFollowing(true, false)
+    }
+  }
 
-//       if (isFollowing) {
-//         await axios
-//           .delete(`/follows/${user.id}`)
-//           .then(() => {
-//             setIsDisabled(false)
-//             mutate('/users/current-user')
-//             mutate(`/users/${user.username}`)
-//           })
-//           .catch(error => {
-//             console.log(error)
-//           })
-//       } else {
-//         await axios
-//           .post(`/follows/${user.id}`)
-//           .then(() => {
-//             setIsDisabled(false)
-//             mutate('/users/current-user')
-//             mutate(`/users/${user.username}`)
-//           })
-//           .catch(error => {
-//             console.log(error)
-//           })
-//       }
-//     }
+  if (isLoading) return <Spinner />
+  if (loggedOut) return <></>
+  if (currentUser.id === user.id) return <></>
 
-//     if (isLoading) return <Spinner />
-//     if (loggedOut) return <></>
-//     if (currentUser.id === user.id) return <></>
-
-//     return (
-//       <button
-//         className="my-4 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
-//         onClick={handleClick}
-//         disabled={isDisabled}
-//       >
-//         {isFollowing ? 'Unfollow' : 'Follow'}
-//       </button>
-//     )
-//   }
+  return (
+    <button
+      className="mt-4 w-full rounded-full bg-primary-900 py-2 font-bold text-primary-100 transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900"
+      type="button"
+      onClick={handleClick}
+    >
+      {isFollowing ? 'Unfollow' : 'Follow'}
+    </button>
+  )
+}
