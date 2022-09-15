@@ -1,12 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
 
 import { Owner } from '@/components/Owner'
+import { Spinner } from '@/components/Spinner'
 import { useActiveLike } from '@/hooks/useActiveLike'
 import { useActiveLikesCountByPostId } from '@/hooks/useActiveLikesCountByPostId'
 import { useActiveLikesIdsByPostId } from '@/hooks/useActiveLikesIdsByPostId'
+import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { useIsFollowing } from '@/hooks/useIsFollowing'
 import { useObserver } from '@/hooks/useObserver'
-import type { IdModel } from '@/models/id.model'
+import { IdModel } from '@/models/id.model'
+import { LikeModel } from '@/models/like.model'
 import { uniqueItems } from '@/utils/infiniteLoading'
 
 interface PostsLikesProps {
@@ -83,68 +88,40 @@ const Like = ({ likeId }: LikeProps) => {
   return (
     <div className="my-4 flex items-center justify-between px-4">
       <Owner owner={like.owner} />
-      {/* <Follow like={like} /> */}
+      <LikeButton like={like} />
     </div>
   )
 }
 
-// interface FollowProps {
-//     like: PostLike
-//   }
+interface LikeButtonProps {
+  like: LikeModel
+}
 
-//   const Follow = ({ like }: FollowProps) => {
-//     const [isDisabled, setIsDisabled] = useState(false)
-//     const [isFollowing, setIsFollowing] = useState(false)
-//     const { currentUser, isLoading, loggedOut } = useCurrentUser()
-//     const { mutate } = useSWRConfig()
+const LikeButton = ({ like }: LikeButtonProps) => {
+  const { isFollowing, mutateIsFollowing } = useIsFollowing(like.owner_id)
+  const { currentUser, isLoading, loggedOut } = useCurrentUser()
 
-//     useEffect(() => {
-//       if (currentUser) {
-//         let found = currentUser.followings.find(follow => {
-//           return follow.following_id === like.owner_id
-//         })
+  const handleClick = async () => {
+    if (!isFollowing) {
+      axios.post(`/follows/${like.owner_id}`)
+      mutateIsFollowing(true, false)
+    } else {
+      axios.delete(`/follows/${like.owner_id}`)
+      mutateIsFollowing(false, false)
+    }
+  }
 
-//         found ? setIsFollowing(true) : setIsFollowing(false)
-//       }
-//     }, [currentUser, like.owner_id])
+  if (isLoading) return <Spinner />
+  if (loggedOut) return <></>
+  if (currentUser.id === like.owner_id) return <></>
 
-//     const handleClick = async () => {
-//       setIsDisabled(true)
-
-//       if (isFollowing) {
-//         await axios
-//           .delete(`/follows/${like.owner_id}`)
-//           .then(() => {
-//             setIsDisabled(false)
-//             mutate('/users/current-user')
-//           })
-//           .catch(error => {
-//             console.log(error)
-//           })
-//       } else {
-//         await axios
-//           .post(`/follows/${like.owner_id}`)
-//           .then(() => {
-//             setIsDisabled(false)
-//             mutate('/users/current-user')
-//           })
-//           .catch(error => {
-//             console.log(error)
-//           })
-//       }
-//     }
-
-//     if (isLoading) return <Spinner />
-//     if (loggedOut) return <></>
-//     if (currentUser.id === like.owner_id) return <></>
-
-//     return (
-//       <button
-//         className="w-24 rounded-md bg-primary-200 py-2 text-sm font-medium text-primary-900 transition-colors duration-300 dark:bg-primary-500 dark:text-primary-100"
-//         onClick={handleClick}
-//         disabled={isDisabled}
-//       >
-//         {isFollowing ? 'Unfollow' : 'Follow'}
-//       </button>
-//     )
-//   }
+  return (
+    <button
+      className="w-24 rounded-md bg-primary-200 py-2 text-sm font-medium text-primary-900 transition-colors duration-300 dark:bg-primary-500 dark:text-primary-100"
+      type="button"
+      onClick={handleClick}
+    >
+      {isFollowing ? 'Unfollow' : 'Follow'}
+    </button>
+  )
+}
