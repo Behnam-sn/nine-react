@@ -53,7 +53,7 @@ export const Post = ({ postId }: postProps) => {
 
           <div className="ml-2">{post.comments}</div>
 
-          <LikeButton post={post} postId={post.id} />
+          <LikeButton post={post} />
 
           <div className="ml-2">{post.likes}</div>
         </div>
@@ -65,22 +65,21 @@ export const Post = ({ postId }: postProps) => {
 
 interface LikeButtonProps {
   post: PostModel
-  postId: number
 }
 
-const LikeButton = ({ post, postId }: LikeButtonProps) => {
-  const { isLiked, mutateIsPostLiked } = useIsPostLiked(postId)
+const LikeButton = ({ post }: LikeButtonProps) => {
+  const { isLiked, mutateIsPostLiked } = useIsPostLiked(post.id)
   const { loggedOut } = useCurrentUser()
   const router = useRouter()
   const { mutate } = useSWRConfig()
 
   const likePost = async () => {
-    await axios.post(`/likes/post/${postId}`)
+    await axios.post(`/likes/post/${post.id}`)
     return { ...post, likes: post.likes + 1 }
   }
 
   const unlikePost = async () => {
-    await axios.delete(`/likes/post/${postId}`)
+    await axios.delete(`/likes/post/${post.id}`)
     return { ...post, likes: post.likes - 1 }
   }
 
@@ -90,14 +89,14 @@ const LikeButton = ({ post, postId }: LikeButtonProps) => {
     } else {
       if (!isLiked) {
         let updatedPost = { ...post, likes: post.likes + 1 }
-        mutate(`/active-posts/${postId}`, likePost(), {
+        mutate(`/active-posts/${post.id}`, likePost(), {
           optimisticData: updatedPost,
           rollbackOnError: true
         })
         mutateIsPostLiked(true, false)
       } else {
         let updatedPost = { ...post, likes: post.likes - 1 }
-        mutate(`/active-posts/${postId}`, unlikePost(), {
+        mutate(`/active-posts/${post.id}`, unlikePost(), {
           optimisticData: updatedPost,
           rollbackOnError: true
         })
