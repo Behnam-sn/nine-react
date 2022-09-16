@@ -11,8 +11,8 @@ import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
 import { HeartIconSolid } from '@/components/icons/HeartIconSolid'
 import { Owner } from '@/components/Owner'
 import { useActiveComment } from '@/hooks/useActiveComment'
-import { useActiveCommentsCountByPostId } from '@/hooks/useActiveCommentsCountByPostId'
-import { useActiveCommentsIdsByPostId } from '@/hooks/useActiveCommentsIdsByPostId'
+import { useCommentsCountByPostId } from '@/hooks/useCommentsCountByPostId'
+import { useCommentsIdsByPostId } from '@/hooks/useCommentsIdsByPostId'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useIsCommentLiked } from '@/hooks/useIsCommentLiked'
 import { useObserver } from '@/hooks/useObserver'
@@ -30,8 +30,8 @@ export const PostComments = ({ postId }: PostCommentsProps) => {
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count } = useActiveCommentsCountByPostId(postId)
-  const { ids } = useActiveCommentsIdsByPostId(postId, skip, limit)
+  const { count } = useCommentsCountByPostId(postId)
+  const { ids } = useCommentsIdsByPostId(postId, skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isVisable] = useObserver({
@@ -63,9 +63,7 @@ export const PostComments = ({ postId }: PostCommentsProps) => {
 
   useEffect(() => {
     if (ids) {
-      setItems(pervItems =>
-        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
-      )
+      setItems(pervItems => uniqueItems([...pervItems, ...ids.slice(0).reverse()]))
 
       if (limit === 0) setLimit(5)
     }

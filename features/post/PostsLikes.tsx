@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from 'react'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useActiveLike } from '@/hooks/useActiveLike'
-import { useActiveLikesCountByPostId } from '@/hooks/useActiveLikesCountByPostId'
-import { useActiveLikesIdsByPostId } from '@/hooks/useActiveLikesIdsByPostId'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useIsFollowing } from '@/hooks/useIsFollowing'
+import { useLikesCountByPostId } from '@/hooks/useLikesCountByPostId'
+import { useLikesIdsByPostId } from '@/hooks/useLikesIdsByPostId'
 import { useObserver } from '@/hooks/useObserver'
 import { IdModel } from '@/models/id.model'
 import { LikeModel } from '@/models/like.model'
@@ -24,8 +24,8 @@ export const PostsLikes = ({ postId }: PostsLikesProps) => {
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count } = useActiveLikesCountByPostId(postId)
-  const { ids } = useActiveLikesIdsByPostId(postId, skip, limit)
+  const { count } = useLikesCountByPostId(postId)
+  const { ids } = useLikesIdsByPostId(postId, skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isVisable] = useObserver({
@@ -57,9 +57,7 @@ export const PostsLikes = ({ postId }: PostsLikesProps) => {
 
   useEffect(() => {
     if (ids) {
-      setItems(pervItems =>
-        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
-      )
+      setItems(pervItems => uniqueItems([...pervItems, ...ids.slice(0).reverse()]))
 
       if (limit === 0) setLimit(5)
     }
