@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { ActivePosts } from '@/features/post/ActivePosts'
+import { Posts } from '@/features/post/Posts'
 
 const Home = () => {
-  return <ActivePosts />
+  return <Posts />
 
   // if (posts.length > 0) {
   //   return (

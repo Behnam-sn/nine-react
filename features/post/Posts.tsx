@@ -2,20 +2,20 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Post } from '@/features/post/Post'
-import { useActivePostsCount } from '@/hooks/useActivePostsCount'
-import { useActivePostsIds } from '@/hooks/useActivePostsIds'
 import { useObserver } from '@/hooks/useObserver'
+import { usePostsCount } from '@/hooks/usePostsCount'
+import { usePostsIds } from '@/hooks/usePostsIds'
 import type { IdModel } from '@/models/id.model'
 import { uniqueItems } from '@/utils/infiniteLoading'
 
-export const ActivePosts = () => {
+export const Posts = () => {
   const [initialCount, setInitialCount] = useState(0)
   const [skip, setSkip] = useState(0)
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count } = useActivePostsCount()
-  const { ids } = useActivePostsIds(skip, limit)
+  const { count } = usePostsCount()
+  const { ids } = usePostsIds(skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isVisable] = useObserver({
@@ -47,9 +47,7 @@ export const ActivePosts = () => {
 
   useEffect(() => {
     if (ids) {
-      setItems(pervItems =>
-        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
-      )
+      setItems(pervItems => uniqueItems([...pervItems, ...ids.slice(0).reverse()]))
 
       if (limit === 0) setLimit(5)
     }

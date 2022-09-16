@@ -9,9 +9,9 @@ import { CommentIconOutline } from '@/components/icons/CommentIconOutline'
 import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
 import { HeartIconSolid } from '@/components/icons/HeartIconSolid'
 import { Owner } from '@/components/Owner'
-import { useActivePost } from '@/hooks/useActivePost'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useIsPostLiked } from '@/hooks/useIsPostLiked'
+import { usePost } from '@/hooks/usePost'
 import { PostModel } from '@/models/post.model'
 
 interface postProps {
@@ -19,14 +19,14 @@ interface postProps {
 }
 
 export const Post = ({ postId }: postProps) => {
-  const { post, isLoading, error } = useActivePost(postId)
+  const { post, isLoading, error } = usePost(postId)
 
   if (isLoading) return <></>
   if (error) return <></>
 
   return (
     <>
-      <article className="relative z-0 mt-4 pb-10">
+      <article className={`relative z-0 mt-4 pb-10 ${post.is_active === false && 'opacity-60'}`}>
         <Link href={`/posts/${post.id}`}>
           <div className="px-4">
             <div className="flex items-center justify-between">

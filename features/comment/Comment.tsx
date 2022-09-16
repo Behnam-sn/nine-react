@@ -7,7 +7,7 @@ import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useActiveComment } from '@/hooks/useActiveComment'
-import { useActivePost } from '@/hooks/useActivePost'
+import { usePost } from '@/hooks/usePost'
 import type { OwnerModel } from '@/models/user.model'
 
 interface CommentProps {
@@ -54,7 +54,7 @@ interface PostProp {
 }
 
 const Post = ({ id }: PostProp) => {
-  const { post, isLoading, error } = useActivePost(id)
+  const { post, isLoading, error } = usePost(id)
 
   if (isLoading) return <Spinner />
   if (error) return <div>post not found</div>
