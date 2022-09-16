@@ -6,7 +6,7 @@ import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
 import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
-import { useActiveComment } from '@/hooks/useActiveComment'
+import { useComment } from '@/hooks/useComment'
 import { usePost } from '@/hooks/usePost'
 import type { OwnerModel } from '@/models/user.model'
 
@@ -15,7 +15,7 @@ interface CommentProps {
 }
 
 export const Comment = ({ commentId }: CommentProps) => {
-  const { comment, isLoading, error } = useActiveComment(commentId)
+  const { comment, isLoading, error } = useComment(commentId)
 
   if (isLoading) return <></>
   if (error) return <div>comment not found</div>

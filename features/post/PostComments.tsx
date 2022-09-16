@@ -10,7 +10,7 @@ import { Divider } from '@/components/Divider'
 import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
 import { HeartIconSolid } from '@/components/icons/HeartIconSolid'
 import { Owner } from '@/components/Owner'
-import { useActiveComment } from '@/hooks/useActiveComment'
+import { useComment } from '@/hooks/useComment'
 import { useCommentsCountByPostId } from '@/hooks/useCommentsCountByPostId'
 import { useCommentsIdsByPostId } from '@/hooks/useCommentsIdsByPostId'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
@@ -84,7 +84,7 @@ interface CommentProps {
 }
 
 const Comment = ({ commentId }: CommentProps) => {
-  const { comment, isLoading, error } = useActiveComment(commentId)
+  const { comment, isLoading, error } = useComment(commentId)
 
   if (isLoading) return <></>
   if (error) return <div>comment not found</div>
