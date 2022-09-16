@@ -14,7 +14,7 @@ interface UserProps {
 
 export const User = ({ user }: UserProps) => {
   return (
-    <div className="mb-4 px-4">
+    <div className={`mb-4 px-4 ${user.is_active === false && 'opacity-60'}`}>
       <div className="my-2 flex content-center">
         <div className="mr-4">
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary-900 transition-colors duration-300 dark:bg-primary-100">
@@ -40,9 +40,7 @@ export const User = ({ user }: UserProps) => {
       <div className="mt-2">
         <div className="flex items-baseline">
           <div className="mr-1 text-3xl font-semibold">{user.name}</div>
-          {user.is_superuser && (
-            <BadgeIcon className="h-5 w-5 stroke-2 text-blue-500" />
-          )}
+          {user.is_superuser && <BadgeIcon className="h-5 w-5 stroke-2 text-blue-500" />}
         </div>
         <div className="mt-1 text-sm text-primary-300">{`@${user.username}`}</div>
         <div>{user.bio}</div>

@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Post } from '@/features/post/Post'
-import { useActivePostsCountByOwnerId } from '@/hooks/useActivePostsCountByOwnerId'
-import { useActivePostsIdsByOwnerId } from '@/hooks/useActivePostsIdsByOwnerId'
 import { useObserver } from '@/hooks/useObserver'
+import { usePostsCountByOwnerId } from '@/hooks/usePostsCountByOwnerId'
+import { usePostsIdsByOwnerId } from '@/hooks/usePostsIdsByOwnerId'
 import type { IdModel } from '@/models/id.model'
 import { uniqueItems } from '@/utils/infiniteLoading'
 
@@ -18,8 +18,8 @@ export const UserPosts = ({ userId }: UserPostsProps) => {
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count } = useActivePostsCountByOwnerId(userId)
-  const { ids } = useActivePostsIdsByOwnerId(userId, skip, limit)
+  const { count } = usePostsCountByOwnerId(userId)
+  const { ids } = usePostsIdsByOwnerId(userId, skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isVisable] = useObserver({
@@ -51,9 +51,7 @@ export const UserPosts = ({ userId }: UserPostsProps) => {
 
   useEffect(() => {
     if (ids) {
-      setItems(pervItems =>
-        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
-      )
+      setItems(pervItems => uniqueItems([...pervItems, ...ids.slice(0).reverse()]))
 
       if (limit === 0) setLimit(5)
     }

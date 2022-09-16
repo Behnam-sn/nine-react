@@ -2,8 +2,8 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Comment } from '@/features/comment/Comment'
-import { useActiveCommentsCountByOwnerId } from '@/hooks/useActiveCommentsCountByOwnerId'
-import { useActiveCommentsIdsByOwnerId } from '@/hooks/useActiveCommentsIdsByOwnerId'
+import { useCommentsCountByOwnerId } from '@/hooks/useCommentsCountByOwnerId'
+import { useCommentsIdsByOwnerId } from '@/hooks/useCommentsIdsByOwnerId'
 import { useObserver } from '@/hooks/useObserver'
 import type { IdModel } from '@/models/id.model'
 import { uniqueItems } from '@/utils/infiniteLoading'
@@ -18,8 +18,8 @@ export const UserComments = ({ userId }: UserCommentsProps) => {
   const [limit, setLimit] = useState(0)
   const [items, setItems] = useState<IdModel[]>([])
 
-  const { count } = useActiveCommentsCountByOwnerId(userId)
-  const { ids } = useActiveCommentsIdsByOwnerId(userId, skip, limit)
+  const { count } = useCommentsCountByOwnerId(userId)
+  const { ids } = useCommentsIdsByOwnerId(userId, skip, limit)
 
   const ref = useRef<HTMLDivElement>(null)
   const [isVisable] = useObserver({
@@ -51,9 +51,7 @@ export const UserComments = ({ userId }: UserCommentsProps) => {
 
   useEffect(() => {
     if (ids) {
-      setItems(pervItems =>
-        uniqueItems([...pervItems, ...ids.slice(0).reverse()])
-      )
+      setItems(pervItems => uniqueItems([...pervItems, ...ids.slice(0).reverse()]))
 
       if (limit === 0) setLimit(5)
     }

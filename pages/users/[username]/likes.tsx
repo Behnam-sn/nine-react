@@ -6,14 +6,14 @@ import { Spinner } from '@/components/Spinner'
 import { NavigationSection } from '@/features/user/NavigationSection'
 import { User } from '@/features/user/User'
 import { UserLikes } from '@/features/user/UserLikes'
-import { useActiveUser } from '@/hooks/useActiveUser'
+import { useUser } from '@/hooks/useUser'
 
 interface UserWithLikesProps {
   username: any
 }
 
 const UserWithLikes = ({ username }: UserWithLikesProps) => {
-  const { user, isLoading, error } = useActiveUser(username)
+  const { user, isLoading, error } = useUser(username)
 
   if (isLoading) return <Spinner />
   if (error) return <div>user not found</div>
