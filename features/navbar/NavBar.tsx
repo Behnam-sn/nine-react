@@ -8,7 +8,7 @@ import { PlusIcon } from '@/components/icons/PlusIcon'
 import { SearchIcon } from '@/components/icons/SearchIcon'
 import { UserIconOutline } from '@/components/icons/UserIconOutline'
 import { UserIconSolid } from '@/components/icons/UserIconSolid'
-import { NavBarItem } from '@/components/NavBar/NavBarItem'
+import { NavBarItem } from '@/features/navbar/NavBarItem'
 
 const activeLink = (url: string, pathname: string) => {
   return pathname === url ? 'stroke-[2.5]' : ''

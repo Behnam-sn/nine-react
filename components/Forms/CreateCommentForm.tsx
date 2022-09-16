@@ -3,7 +3,7 @@ import { Form, Formik, useField } from 'formik'
 import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
 
-import { SubmitButton } from '@/components/Forms/SubmitButton'
+import { SubmitButton } from '@/components/forms/SubmitButton'
 
 interface CreateCommentFormProps {
   postId: number

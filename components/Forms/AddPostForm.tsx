@@ -2,8 +2,8 @@ import { Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import * as Yup from 'yup'
 
-import { CustomTextarea } from '@/components/Forms/CustomTextarea'
-import { SubmitButton } from '@/components/Forms/SubmitButton'
+import { CustomTextarea } from '@/components/forms/CustomTextarea'
+import { SubmitButton } from '@/components/forms/SubmitButton'
 import { CreatePost } from '@/utils/post'
 
 export const AddPostForm = () => {

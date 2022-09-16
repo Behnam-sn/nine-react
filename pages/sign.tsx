@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 
-import { SignInForm } from '@/components/Forms/SignInForm'
-import { SignUpForm } from '@/components/Forms/SignUpForm'
+import { SignInForm } from '@/components/forms/SignInForm'
+import { SignUpForm } from '@/components/forms/SignUpForm'
 
 const Page: NextPage = () => {
   const [section, setSection] = useState('Sign In')

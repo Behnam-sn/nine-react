@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
 
-import { CustomInput } from '@/components/Forms/CustomInput'
-import { SubmitButton } from '@/components/Forms/SubmitButton'
+import { CustomInput } from '@/components/forms/CustomInput'
+import { SubmitButton } from '@/components/forms/SubmitButton'
 import { setToken } from '@/utils/auth'
 
 export const SignInForm = () => {

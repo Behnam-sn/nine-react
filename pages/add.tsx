@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import { AddPostForm } from '@/components/Forms/AddPostForm'
+import { AddPostForm } from '@/components/forms/AddPostForm'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useCurrentUser } from '@/hooks/useCurrentUser'

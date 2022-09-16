@@ -1,5 +1,5 @@
 import { Divider } from '@/components/Divider'
-import { CreateCommentForm } from '@/components/Forms/CreateCommentForm'
+import { CreateCommentForm } from '@/components/forms/CreateCommentForm'
 import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 

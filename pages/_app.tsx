@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '@/styles/globals.css'
 
 import axios from 'axios'
@@ -6,10 +7,10 @@ import { useEffect } from 'react'
 import { SWRConfig, useSWRConfig } from 'swr'
 
 import { FetchTheme } from '@/components/FetchTheme'
-import { HeaderBar } from '@/components/HeaderBar/HeaderBar'
-import { NavBar } from '@/components/NavBar/NavBar'
 import { CurrentUserProvider } from '@/contexts/CurrentUserContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { Header } from '@/features/header/Header'
+import { NavBar } from '@/features/navbar/NavBar'
 import { getCookie } from '@/utils/cookie'
 import { fetcher } from '@/utils/fetcher'
 
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider>
           <CurrentUserProvider>
             <FetchTheme>
-              <HeaderBar />
+              <Header />
               <div className="mt-16 pb-60">
                 <Component {...pageProps} />
               </div>
