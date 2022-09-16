@@ -26,7 +26,11 @@ export const Post = ({ postId }: postProps) => {
 
   return (
     <>
-      <article className={`relative z-0 mt-4 pb-10 ${post.is_active === false && 'opacity-60'}`}>
+      <article
+        className={`relative z-0 mt-4 pb-10 ${
+          (post.is_active === false || post.is_owner_active === false) && 'opacity-60'
+        }`}
+      >
         <Link href={`/posts/${post.id}`}>
           <div className="px-4">
             <div className="flex items-center justify-between">
