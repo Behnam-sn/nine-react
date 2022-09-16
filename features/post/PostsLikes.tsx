@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
-import { useActiveLike } from '@/hooks/useActiveLike'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useIsFollowing } from '@/hooks/useIsFollowing'
+import { useLike } from '@/hooks/useLike'
 import { useLikesCountByPostId } from '@/hooks/useLikesCountByPostId'
 import { useLikesIdsByPostId } from '@/hooks/useLikesIdsByPostId'
 import { useObserver } from '@/hooks/useObserver'
@@ -78,7 +78,7 @@ interface LikeProps {
 }
 
 const Like = ({ likeId }: LikeProps) => {
-  const { like, isLoading, error } = useActiveLike(likeId)
+  const { like, isLoading, error } = useLike(likeId)
 
   if (isLoading) return <></>
   if (error) return <div>comment not found</div>

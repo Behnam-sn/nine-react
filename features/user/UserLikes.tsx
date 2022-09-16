@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { Comment } from '@/features/comment/Comment'
 import { Post } from '@/features/post/Post'
-import { useActiveLike } from '@/hooks/useActiveLike'
+import { useLike } from '@/hooks/useLike'
 import { useLikesCountByOwnerId } from '@/hooks/useLikesCountByOwnerId'
 import { useLikesIdsByOwnerId } from '@/hooks/useLikesIdsByOwnerId'
 import { useObserver } from '@/hooks/useObserver'
@@ -74,7 +74,7 @@ interface LikeProps {
 }
 
 const Like = ({ likeId }: LikeProps) => {
-  const { like, isLoading, error } = useActiveLike(likeId)
+  const { like, isLoading, error } = useLike(likeId)
 
   if (isLoading) return <></>
   if (error) return <></>
