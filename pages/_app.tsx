@@ -8,6 +8,7 @@ import { SWRConfig, useSWRConfig } from 'swr'
 import { FetchTheme } from '@/components/FetchTheme'
 import { HeaderBar } from '@/components/HeaderBar/HeaderBar'
 import { NavBar } from '@/components/NavBar/NavBar'
+import { CurrentUserProvider } from '@/contexts/CurrentUserContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { getCookie } from '@/utils/cookie'
 import { fetcher } from '@/utils/fetcher'
@@ -32,13 +33,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       >
         <ThemeProvider>
-          <FetchTheme>
-            <HeaderBar />
-            <div className="mt-16 pb-60">
-              <Component {...pageProps} />
-            </div>
-            <NavBar />
-          </FetchTheme>
+          <CurrentUserProvider>
+            <FetchTheme>
+              <HeaderBar />
+              <div className="mt-16 pb-60">
+                <Component {...pageProps} />
+              </div>
+              <NavBar />
+            </FetchTheme>
+          </CurrentUserProvider>
         </ThemeProvider>
       </SWRConfig>
     </>

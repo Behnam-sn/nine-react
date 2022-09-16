@@ -1,5 +1,7 @@
 import useSWR, { KeyedMutator } from 'swr'
 
+import { useCurrentUserContext } from '@/contexts/CurrentUserContext'
+
 interface useIsPostLikedProps {
   isLiked: boolean
   isLoading: boolean
@@ -8,7 +10,10 @@ interface useIsPostLikedProps {
 }
 
 export const useIsPostLiked = (postId: number) => {
-  const { data, error, mutate } = useSWR(`/likes/is-post-liked/${postId}`)
+  const { loggedOut } = useCurrentUserContext()
+  const { data, error, mutate } = useSWR(
+    loggedOut ? null : `/likes/is-post-liked/${postId}`
+  )
 
   return {
     isLiked: data,
