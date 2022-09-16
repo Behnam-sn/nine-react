@@ -1,13 +1,20 @@
+import axios from 'axios'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useSWRConfig } from 'swr'
 
 import { DateDistance } from '@/components/DateDistance'
 import { Divider } from '@/components/Divider'
 import { HeartIconOutline } from '@/components/icons/HeartIconOutline'
+import { HeartIconSolid } from '@/components/icons/HeartIconSolid'
 import { UserCircleIconOutline } from '@/components/icons/UserCircleIconOutline'
 import { Owner } from '@/components/Owner'
 import { Spinner } from '@/components/Spinner'
 import { useComment } from '@/hooks/useComment'
+import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { useIsCommentLiked } from '@/hooks/useIsCommentLiked'
 import { usePost } from '@/hooks/usePost'
+import { CommentModel } from '@/models/comment.model'
 import type { OwnerModel } from '@/models/user.model'
 
 interface CommentProps {
@@ -37,9 +44,7 @@ export const Comment = ({ commentId }: CommentProps) => {
         </div>
 
         <div className="absolute right-4 bottom-4 z-10 flex items-center justify-end">
-          <button className="ml-4">
-            <HeartIconOutline className="h-6 w-6 stroke-2" />
-          </button>
+          <LikeButton comment={comment} />
           <div className="ml-2">{comment.likes}</div>
         </div>
       </div>
@@ -87,5 +92,62 @@ const PostOwner = ({ owner }: PostOwnerProp) => {
         <div className="text-xs text-primary-300">{`@${owner.username}`}</div>
       </a>
     </Link>
+  )
+}
+
+interface LikeButtonProps {
+  comment: CommentModel
+}
+
+const LikeButton = ({ comment }: LikeButtonProps) => {
+  const { isLiked, mutateIsCommentLiked } = useIsCommentLiked(comment.id)
+  const { loggedOut } = useCurrentUser()
+
+  const router = useRouter()
+  const { mutate } = useSWRConfig()
+
+  const likeComment = async () => {
+    await axios.post(`/likes/comment/${comment.id}`)
+    return { ...comment, likes: comment.likes + 1 }
+  }
+
+  const unlikeComment = async () => {
+    await axios.delete(`/likes/comment/${comment.id}`)
+    return { ...comment, likes: comment.likes - 1 }
+  }
+
+  const handleClick = async () => {
+    if (loggedOut) {
+      router.push('/sign')
+    } else {
+      if (!isLiked) {
+        mutate(`/active-comments/${comment.id}`, likeComment(), {
+          optimisticData: { ...comment, likes: comment.likes + 1 },
+          rollbackOnError: true
+        })
+        mutateIsCommentLiked(true, false)
+      } else {
+        mutate(`/active-comments/${comment.id}`, unlikeComment(), {
+          optimisticData: { ...comment, likes: comment.likes - 1 },
+          rollbackOnError: true
+        })
+        mutateIsCommentLiked(false, false)
+      }
+    }
+  }
+
+  return (
+    <button
+      className="group ml-4 rounded-full p-1 outline-none transition-colors duration-300 hover:bg-red-300/20"
+      type="button"
+      title=""
+      onClick={handleClick}
+    >
+      {isLiked ? (
+        <HeartIconSolid className="h-6 w-6 text-red-500" />
+      ) : (
+        <HeartIconOutline className="h-6 w-6 stroke-2 text-primary-900 transition-colors duration-300 group-hover:text-red-500 dark:text-primary-100 dark:group-hover:text-red-500" />
+      )}
+    </button>
   )
 }
